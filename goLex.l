@@ -212,6 +212,12 @@ for {
   return FOR;
 }
 
+else {
+  ADJUST();
+  lastTokenType = ELSE;
+  return ELSE;
+}
+
 var {
   ADJUST();
   lastTokenType = VAR;
