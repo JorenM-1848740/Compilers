@@ -56,6 +56,12 @@ package {
   return PACKAGE;
 }
 
+, {
+  ADJUST();
+  lastTokenType == COMMA;
+  return COMMA;
+}
+
 = {
   ADJUST();
   lastTokenType = ASSIGN;
