@@ -1,23 +1,38 @@
 %{
 #include <stdio.h>
+#include "absyn.hpp"
 
 
 void yyerror(const char* str);
 extern int yylex();
 
+SourceFile thesyntree;
+
 %}
+%code requires {
+    #include "absyn.hpp"
+}
+
+%union {
+  SourceFile sourceFile;
+  PackageClause packageClause;
+  TopLevelDecl topLevelDecl;
+  TopLevelDeclList topLevelDeclList;
+  char* id;
+}
 
 // vul aan met tokendeclaraties
 %token
   SEMICOLON COMMA
-  IDENTIFIER INTLITERAL BOOLLITERAL
+  INTLITERAL BOOLLITERAL
   INT BOOL
   PACKAGE RETURN VAR IF FOR FUNC ELSE
   LPAREN RPAREN LBRACE RBRACE
   PLUS MIN MUL DIV PLUSASSIGN MINASSIGN MULASSIGN DIVASSIGN ASSIGN UMINUS
   AND OR NOT INC DEC GT GE LT LE EQ NE
-// vul aan met voorrangdeclaraties
 
+%token <id> IDENTIFIER
+// vul aan met voorrangdeclaraties
 
 %left OR
 %left AND
@@ -25,29 +40,33 @@ extern int yylex();
 %left PLUS MIN
 %left MUL DIV
 
-
-
 %right UMINUS
-
 
 %defines
 %define parse.error verbose
 
+%type <sourceFile> SourceFile
+%type <packageClause> PackageClause
+%type <topLevelDecl> TopLevelDecl
+%type <topLevelDeclList> TopLevelDeclList
+
 %%
 
-SourceFile : PackageClause SEMICOLON SourceFileH1 {puts("PackageClause SEMICOLON SourceFileH1");;}
+SourceFile : PackageClause SEMICOLON TopLevelDeclList {puts("PackageClause SEMICOLON SourceFileH1"); 
+$$ = new SourceFile_($1, $3); thesyntree = $$;}
   ;
 
-SourceFileH1 : 
-  | SourceFileH1 TopLevelDecl SEMICOLON {puts("SourceFileH1 TopLevelDecl SEMICOLON");;}
+TopLevelDeclList : {$$ = new TopLevelDeclList_();}
+  | TopLevelDeclList TopLevelDecl SEMICOLON {puts("SourceFileH1 TopLevelDecl SEMICOLON");
+$$ = new TopLevelDeclList_($1, $2);}
   ;
 
 // vul aan met producties
-Block : LBRACE StatementList RBRACE {puts("LBRACE StatementList RBRACE");;}
+Block : LBRACE StatementList RBRACE {puts("LBRACE StatementList RBRACE");}
   ;
 
 StatementList : 
-  | StatementList Statement SEMICOLON {puts("StatementList Statement SEMICOLON");;}
+  | StatementList Statement SEMICOLON {puts("StatementList Statement SEMICOLON");}
   ;
 
 IdentifierList : IDENTIFIER {puts("IDENTIFIER");}
@@ -148,6 +167,7 @@ Arguments : LPAREN RPAREN {puts("LPAREN RPAREN");}
   | LPAREN ExpressionList RPAREN {puts("LPAREN ExpressionList RPAREN");}
   | LPAREN Type RPAREN {puts("LPAREN Type RPAREN");}
   | LPAREN Type COMMA ExpressionList RPAREN {puts("LPAREN Type COMMA ExpressionList RPAREN");}
+  | LPAREN COMMA RPAREN {puts("LPAREN COMMA RPAREN");}
   | LPAREN ExpressionList COMMA RPAREN {puts("LPAREN ExpressionList COMMA RPAREN");}
   | LPAREN Type COMMA RPAREN {puts("LPAREN Type COMMA RPAREN");}
   | LPAREN Type COMMA ExpressionList COMMA RPAREN {puts("LPAREN Type COMMA ExpressionList COMMA RPAREN");}
@@ -272,11 +292,14 @@ PostStmt : SimpleStmt {puts("SimpleStmt");}
 
 //PACKAGES
 
-PackageClause : PACKAGE PackageName {puts("PACKAGE PackageName");}
+PackageClause : PACKAGE IDENTIFIER {puts("PACKAGE IDENTIFIER");
+$$ = new PackageClause_($2);}
   ;
 
+/*
 PackageName : IDENTIFIER {puts("IDENTIFIER");}
   ;
+*/
 
 %%
 

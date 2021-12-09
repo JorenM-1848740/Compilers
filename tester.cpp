@@ -1,7 +1,10 @@
 #include <stdio.h>
+#include "absyn.hpp"
 
 extern FILE *yyin;
 extern int yyparse();
+extern SourceFile thesyntree;
+int printWidth = 4;
 
 /* Array with tokens such that index = tokenid - 250*/
 // char *tokens[] = {
@@ -36,5 +39,6 @@ int main(int argc, char* argv[])
   // }
   // return 0;
   yyparse();
+  thesyntree->print(0);
   return 0;
 }

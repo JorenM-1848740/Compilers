@@ -269,6 +269,9 @@ func {
 {identifier} {
   ADJUST();
   lastTokenType = IDENTIFIER;
+  char* s = (char*) malloc(yyleng+1);
+  strcpy(s, yytext);
+  yylval.id = s;
   return IDENTIFIER;
 }
 
