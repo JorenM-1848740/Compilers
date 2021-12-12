@@ -162,10 +162,10 @@ struct ExpressionList_{
 struct IdentifierList_{
 
     IdentifierList identifierList = nullptr;
-    string identifier = nullptr;
+    string identifier = "";
 
-    IdentifierList_(IdentifierList il, string i);
-    IdentifierList_(string i);
+    IdentifierList_(IdentifierList il, const char* i);
+    IdentifierList_(const char* i);
 
     void print(int d);
 };

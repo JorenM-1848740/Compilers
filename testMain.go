@@ -8,10 +8,10 @@ func main(){
 	var i = 0
     
     for i=1;i<=n;i++ {
-        if(i==1){
+        if i==1{
 
         }
-        if(i==2){
+        if i==2{
 
         }
         nextTerm = t1 + t2

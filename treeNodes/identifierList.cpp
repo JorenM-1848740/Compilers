@@ -9,10 +9,10 @@ void IdentifierList_::print(int d){
 
 }
 
-IdentifierList_::IdentifierList_(IdentifierList il, string i){
+IdentifierList_::IdentifierList_(IdentifierList il, const char* i){
     identifierList = il;
     identifier = i;
 }
-IdentifierList_::IdentifierList_(string i){
+IdentifierList_::IdentifierList_(const char* i){
     identifier = i;
 }

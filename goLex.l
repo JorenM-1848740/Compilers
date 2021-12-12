@@ -257,12 +257,18 @@ func {
 {bool_lit} {
   ADJUST();
   lastTokenType = BOOLLITERAL;
+  char* s = (char*) malloc(yyleng+1);
+  strcpy(s, yytext);
+  yylval.id = s;
   return BOOLLITERAL;
 }
 
 {decimal_lit} {
   ADJUST();
   lastTokenType = INTLITERAL;
+  char* s = (char*) malloc(yyleng+1);
+  strcpy(s, yytext);
+  yylval.id = s;
   return INTLITERAL;
 }
 
