@@ -1,12 +1,21 @@
 package main
 
-var a int = 0
-var (b, c int = 3, 5;)
-var (d, e bool = true, false; f, g int = 5, 6;)
+func main(){
+    var n int;
+    var t1 = 0
+    var t2 = 1
+    var nextTerm = 0
+	var i = 0
+    
+    for i=1;i<=n;i++ {
+        if(i==1){
 
+        }
+        if(i==2){
 
-func test(int)
-
-func test1(a int, b int){
-
+        }
+        nextTerm = t1 + t2
+        t1=t2
+        t2=nextTerm
+    }
 }

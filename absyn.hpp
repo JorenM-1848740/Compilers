@@ -20,7 +20,6 @@ struct VarSpecList_;
 struct ExpressionList_;
 struct IdentifierList_;
 struct Type_;
-struct FunctionDecl_;
 struct Signature_;
 struct Block_;
 struct Parameters_;
@@ -28,6 +27,23 @@ struct Result_;
 struct ParameterList_;
 struct ParameterDecl_;
 struct StatementList_;
+struct Statement_;
+struct SimpleStmt_;
+struct ReturnStmt_;
+struct IfStmt_;
+struct ForStmt_;
+struct IncDecStmt_;
+struct Assignment_;
+struct ForClause_;
+struct Expression_;
+struct Operand_;
+struct Literal_;
+struct PrimaryExpr_;
+struct Arguments_;
+struct UnaryExpr_;
+struct Unary_op_;
+
+
 
 typedef SourceFile_ *SourceFile;
 typedef PackageClause_ *PackageClause;
@@ -47,6 +63,21 @@ typedef Result_ *Result;
 typedef ParameterList_ *ParameterList;
 typedef ParameterDecl_ *ParameterDecl;
 typedef StatementList_ *StatementList;
+typedef Statement_ *Statement;
+typedef SimpleStmt_ *SimpleStmt;
+typedef ReturnStmt_ *ReturnStmt;
+typedef IfStmt_ *IfStmt;
+typedef ForStmt_ *ForStmt;
+typedef IncDecStmt_ *IncDecStmt;
+typedef Assignment_ *Assignment;
+typedef ForClause_ *ForClause;
+typedef Expression_ *Expression;
+typedef Operand_ *Operand;
+typedef Literal_ *Literal;
+typedef PrimaryExpr_ *PrimaryExpr;
+typedef Arguments_ *Arguments;
+typedef UnaryExpr_ *UnaryExpr;
+typedef Unary_op_ *Unary_op;
 
 struct SourceFile_ {
     PackageClause packageClause = nullptr;
@@ -58,9 +89,9 @@ struct SourceFile_ {
 };
 
 struct PackageClause_{
-    string packageName;
+    string packageName = "";
 
-    PackageClause_(char* p);
+    PackageClause_(const char* p);
     void print(int d); 
 };
 
@@ -119,13 +150,19 @@ struct VarSpecList_{
 };
 
 struct ExpressionList_{
+    ExpressionList expressionList = nullptr;
+    Expression expression = nullptr;
+
+    ExpressionList_(ExpressionList el, Expression e);
+    ExpressionList_(Expression e);
+
     void print(int d);
 };
 
 struct IdentifierList_{
 
-    IdentifierList identifierList;
-    string identifier;
+    IdentifierList identifierList = nullptr;
+    string identifier = nullptr;
 
     IdentifierList_(IdentifierList il, string i);
     IdentifierList_(string i);
@@ -134,7 +171,7 @@ struct IdentifierList_{
 };
 
 struct Type_{
-    string type;
+    string type = "";
 
     Type_(const char* t);
 
@@ -142,11 +179,12 @@ struct Type_{
 };
 
 struct FunctionDecl_{
+    string functionName = "";
     Signature signature = nullptr;
     Block block = nullptr;
 
-    FunctionDecl_(Signature s, Block b);
-    FunctionDecl_(Signature s);
+    FunctionDecl_(const char* fn, Signature s, Block b);
+    FunctionDecl_(const char* fn, Signature s);
 
     void print(int d);
 };
@@ -219,8 +257,191 @@ struct ParameterDecl_{
 };
 
 struct StatementList_{
+    StatementList statementList = nullptr;
+    Statement statement = nullptr;
+
+    StatementList_();
+    StatementList_(StatementList sl, Statement s);
+
     void print(int d);
 };
+
+struct Statement_{
+
+    VarDecl varDecl = nullptr;
+    SimpleStmt simpleStmt = nullptr;
+    ReturnStmt returnStmt = nullptr;
+    Block block = nullptr;
+    IfStmt ifStmt = nullptr;
+    ForStmt forStmt = nullptr;
+
+    Statement_(VarDecl vd);
+    Statement_(SimpleStmt ss);
+    Statement_(ReturnStmt rs);
+    Statement_(Block b);
+    Statement_(IfStmt is);
+    Statement_(ForStmt fs);
+
+    void print(int d);
+};
+
+struct SimpleStmt_{
+    Expression expression = nullptr;
+    IncDecStmt incDecStmt = nullptr;
+    Assignment assignment = nullptr;
+
+    SimpleStmt_();
+    SimpleStmt_(Expression e);
+    SimpleStmt_(IncDecStmt ids);
+    SimpleStmt_(Assignment a);
+
+    void print(int d);
+};
+
+struct ReturnStmt_{
+    ExpressionList expressionList = nullptr;
+
+    ReturnStmt_();
+    ReturnStmt_(ExpressionList el);
+
+    void print(int d);
+};
+
+struct IfStmt_{
+    SimpleStmt simpleStmt = nullptr;
+    Expression expression = nullptr;
+    Block block1 = nullptr;
+    IfStmt ifStmt = nullptr;
+    Block block2 = nullptr;
+
+    IfStmt_(Expression e, Block b);
+    IfStmt_(Expression e, Block b, IfStmt is);
+    IfStmt_(Expression e, Block b1, Block b2);
+    IfStmt_(SimpleStmt ss, Expression e, Block b);
+    IfStmt_(SimpleStmt ss, Expression e, Block b, IfStmt is);
+    IfStmt_(SimpleStmt ss, Expression e, Block b1, Block b2);
+
+    void print(int d);
+
+
+};
+
+struct ForStmt_{
+    Block block = nullptr;
+    Expression expression = nullptr;
+    ForClause forClause = nullptr;
+
+    ForStmt_(Block b);
+    ForStmt_(Expression e, Block b);
+    ForStmt_(ForClause fc, Block b);
+
+    void print(int d);
+};
+
+struct IncDecStmt_{
+    Expression expression = nullptr;
+    string incDec = "";
+
+    IncDecStmt_(Expression e, const char* id);
+
+    void print(int d);
+};
+
+struct Assignment_{
+    ExpressionList expressionList1 = nullptr;
+    string assignOp = "";
+    ExpressionList expressionList2 = nullptr;
+
+    Assignment_(ExpressionList el1, const char* ao, ExpressionList el2);
+
+    void print(int d);
+};
+
+struct ForClause_{
+    SimpleStmt simpleStmt1 = nullptr;
+    Expression expression = nullptr;
+    SimpleStmt simpleStmt2 = nullptr;
+
+    ForClause_(SimpleStmt ss1, SimpleStmt ss2);
+    ForClause_(SimpleStmt ss1, Expression e, SimpleStmt ss2);
+
+    void print(int d);
+};
+
+struct Expression_{
+    UnaryExpr unaryExpr = nullptr;
+    Expression expression1 = nullptr;
+    Expression expression2 = nullptr;
+    string op = "";
+
+    Expression_(UnaryExpr ue);
+    Expression_(Expression e1, const char* o, Expression e2);
+
+    void print(int d);
+};
+
+struct Operand_{
+    Literal literal = nullptr;
+    string id = "";
+    Expression expression = nullptr;
+
+    Operand_(Literal l);
+    Operand_(const char* i);
+    Operand_(Expression e);
+
+    void print(int d);
+};
+
+struct Literal_{
+    string literal = "";
+
+    Literal_(const char* l);
+
+    void print(int d);
+};
+
+struct PrimaryExpr_{
+    Operand operand = nullptr;
+    PrimaryExpr primaryExpr = nullptr;
+    Arguments arguments = nullptr;
+
+    PrimaryExpr_(Operand o);
+    PrimaryExpr_(PrimaryExpr pe, Arguments a);
+
+    void print(int d);
+};
+
+struct Arguments_{
+    ExpressionList expressionList = nullptr;
+    Type type = nullptr;
+
+    Arguments_();
+    Arguments_(ExpressionList el);
+    Arguments_(Type t);
+    Arguments_(Type t, ExpressionList el);
+
+    void print(int d);
+};
+
+struct UnaryExpr_{
+    PrimaryExpr primaryExpr = nullptr;
+    Unary_op unary_op = nullptr;
+    UnaryExpr unaryExpr = nullptr;
+
+    UnaryExpr_(PrimaryExpr pe);
+    UnaryExpr_(Unary_op uo, UnaryExpr ue);
+
+    void print(int d);
+};
+
+struct Unary_op_{
+    string unary_op = "";
+
+    Unary_op_(const char* uo);
+
+    void print(int d);
+};
+
 
 
 

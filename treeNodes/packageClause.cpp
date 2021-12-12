@@ -1,6 +1,6 @@
 #include "../absyn.hpp"
 
-PackageClause_::PackageClause_(char* p){
+PackageClause_::PackageClause_(const char* p){
     packageName = p;
 }
 
