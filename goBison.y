@@ -18,6 +18,20 @@ SourceFile thesyntree;
   PackageClause packageClause;
   TopLevelDecl topLevelDecl;
   TopLevelDeclList topLevelDeclList;
+  VarDecl varDecl;
+  FunctionDecl functionDecl;
+  VarSpec varSpec;
+  VarSpecList varSpecList;
+  IdentifierList identifierList;
+  ExpressionList expressionList;
+  Type type;
+  Signature signature;
+  Block block;
+  Parameters parameters;
+  Result result;
+  ParameterList parameterList;
+  ParameterDecl parameterDecl;
+  StatementList statementList;
   char* id;
 }
 
@@ -49,59 +63,88 @@ SourceFile thesyntree;
 %type <packageClause> PackageClause
 %type <topLevelDecl> TopLevelDecl
 %type <topLevelDeclList> TopLevelDeclList
+%type <varDecl> VarDecl
+%type <functionDecl> FunctionDecl
+%type <varSpec> VarSpec
+%type <varSpecList> VarSpecList
+%type <identifierList> IdentifierList
+%type <expressionList> ExpressionList
+%type <type> Type
+%type <signature> Signature
+%type <block> Block
+%type <parameters> Parameters
+%type <result> Result
+%type <parameterList> ParameterList
+%type <parameterDecl> ParameterDecl
+%type <statementList> StatementList
 
 %%
 
-SourceFile : PackageClause SEMICOLON TopLevelDeclList {puts("PackageClause SEMICOLON SourceFileH1"); 
+SourceFile : PackageClause SEMICOLON TopLevelDeclList {puts("PackageClause SEMICOLON TopLevelDeclList"); 
 $$ = new SourceFile_($1, $3); thesyntree = $$;}
   ;
 
 TopLevelDeclList : {$$ = new TopLevelDeclList_();}
-  | TopLevelDeclList TopLevelDecl SEMICOLON {puts("SourceFileH1 TopLevelDecl SEMICOLON");
+  | TopLevelDeclList TopLevelDecl SEMICOLON {puts("TopLevelDeclList TopLevelDecl SEMICOLON");
 $$ = new TopLevelDeclList_($1, $2);}
   ;
 
 // vul aan met producties
-Block : LBRACE StatementList RBRACE {puts("LBRACE StatementList RBRACE");}
+Block : LBRACE StatementList RBRACE {puts("LBRACE StatementList RBRACE");
+$$ = new Block_($2);}
   ;
 
 StatementList : 
   | StatementList Statement SEMICOLON {puts("StatementList Statement SEMICOLON");}
   ;
 
-IdentifierList : IDENTIFIER {puts("IDENTIFIER");}
-  | IdentifierList COMMA IDENTIFIER {puts("COMMA IDENTIFIER");}
+IdentifierList : IDENTIFIER {puts("IDENTIFIER");
+$$ = new IdentifierList_($1);}
+  | IdentifierList COMMA IDENTIFIER {puts("COMMA IDENTIFIER");
+$$ = new IdentifierList_($1, $3);}
   ;
 
-Type : INT {puts("INT");}
-  | BOOL {puts("BOOL");}
-  | LPAREN Type RPAREN {puts("LPAREN Type RPAREN");}
+Type : INT {puts("INT");
+$$ = new Type_("int");}
+  | BOOL {puts("BOOL");
+$$ = new Type_("bool");}
+  //| LPAREN Type RPAREN {puts("LPAREN Type RPAREN");}
   ;
 
 ExpressionList : Expression {puts("Expression");}
   | ExpressionList COMMA Expression {puts("COMMA Expression");}
   ;
 
+/*
 Declaration : VarDecl {puts("VarDecl");}
   ;
+*/
 
-TopLevelDecl : Declaration {puts("Declaration");}
-  | FunctionDecl {puts("FunctionDecl");}
+TopLevelDecl : VarDecl {puts("VarDecl");
+$$ = new TopLevelDecl_($1);}
+  | FunctionDecl {puts("FunctionDecl");
+$$ = new TopLevelDecl_($1);}
   ;
 
 //VARIABLE DECLARATION
 
-VarDecl : VAR VarSpec {puts("VAR VarSpec");}
-  | VAR LPAREN VarSpecList RPAREN {puts("VAR LPAREN VarSpecList RPAREN");}
+VarDecl : VAR VarSpec {puts("VAR VarSpec");
+$$ = new VarDecl_($2);}
+  | VAR LPAREN VarSpecList RPAREN {puts("VAR LPAREN VarSpecList RPAREN");
+$$ = new VarDecl_($3);}
   ;
 
-VarSpecList : 
-  | VarSpec SEMICOLON VarSpecList {puts("VarSpec SEMICOLON VarSpecList");}
+VarSpecList : {$$ = new VarSpecList_();}
+  | VarSpecList VarSpec SEMICOLON {puts("VarSpecList SEMICOLON VarSpec");
+$$ = new VarSpecList_($1, $2);}
   ;
 
-VarSpec : IdentifierList ASSIGN ExpressionList {puts("IdentifierList ASSIGN ExpressionList");}
-  | IdentifierList Type {puts("IdentifierList Type");}
-  | IdentifierList Type ASSIGN ExpressionList {puts("IdentifierList Type ASSIGN ExpressionList");}
+VarSpec : IdentifierList ASSIGN ExpressionList {puts("IdentifierList ASSIGN ExpressionList");
+$$ = new VarSpec_($1, $3);}
+  | IdentifierList Type {puts("IdentifierList Type");
+$$ = new VarSpec_($1, $2);}
+  | IdentifierList Type ASSIGN ExpressionList {puts("IdentifierList Type ASSIGN ExpressionList");
+$$ = new VarSpec_($1, $2, $4);}
   ;
 
 //////////////////////////////////////////////
@@ -110,34 +153,41 @@ VarSpec : IdentifierList ASSIGN ExpressionList {puts("IdentifierList ASSIGN Expr
 
 //FUNCTION DECLARATION
 
-FunctionDecl : FUNC FunctionName Signature {puts("FUNC FunctionName Signature");}
-  | FUNC FunctionName Signature FunctionBody {puts("FUNC FunctionName Signature FunctionBody");}
+FunctionDecl : FUNC IDENTIFIER Signature {puts("FUNC FunctionName Signature");
+$$ = new FunctionDecl_($3);}
+  | FUNC IDENTIFIER Signature Block {puts("FUNC FunctionName Signature FunctionBody");
+$$ = new FunctionDecl_($3, $4);}
   ;
 
-FunctionName : IDENTIFIER {puts("IDENTIFIER");}
+Signature : Parameters {puts("Parameters");
+$$ = new Signature_($1);}
+  | Parameters Result {puts("Parameters Result");
+$$ = new Signature_($1, $2);}
   ;
 
-FunctionBody : Block {puts("Block");}
+Result : Parameters {puts("Parameters");
+$$ = new Result_($1);}
+  | Type {puts("Type");
+$$ = new Result_($1);}
   ;
 
-Signature : Parameters {puts("Parameters");}
-  | Parameters Result {puts("Parameters Result");}
+Parameters : LPAREN RPAREN {puts("LPAREN RPAREN");
+$$ = new Parameters_();}
+  | LPAREN ParameterList RPAREN {puts("LPAREN ParameterList RPAREN");
+$$ = new Parameters_($2);}
+  | LPAREN ParameterList COMMA RPAREN {puts("LPAREN ParameterList COMMA RPAREN");
+$$ = new Parameters_($2);}
+  ;
+ParameterList : ParameterDecl {puts("ParameterDecl");
+$$ = new ParameterList_($1);}
+  | ParameterList COMMA ParameterDecl {puts("ParameterList COMMA ParameterDecl");
+$$ = new ParameterList_($1, $3);}
   ;
 
-Result : Parameters {puts("Parameters");}
-  | Type {puts("Type");}
-  ;
-
-Parameters : LPAREN RPAREN {puts("LPAREN RPAREN");}
-  | LPAREN ParameterList RPAREN {puts("LPAREN ParameterList RPAREN");}
-  | LPAREN ParameterList COMMA RPAREN {puts("LPAREN ParameterList COMMA RPAREN");}
-  ;
-ParameterList : ParameterDecl {puts("ParameterDecl");}
-  | ParameterList COMMA ParameterDecl {puts("ParameterList COMMA ParameterDecl");}
-  ;
-
-ParameterDecl : IdentifierList Type {puts("IdentifierList Type");}
-//  | Type {puts("Type");}
+ParameterDecl : IdentifierList Type {puts("IdentifierList Type");
+$$ = new ParameterDecl_($1, $2);}
+  | Type {puts("Type");
+$$ = new ParameterDecl_($1);}
   ;
 
 //////////////////////////////////////////////
@@ -225,7 +275,7 @@ Unary_op : PLUS %prec UMINUS {puts("PLUS");}
 
 //STATEMENTS
 
-Statement : Declaration {puts("Declaration");}
+Statement : VarDecl {puts("VarDecl");}
   | SimpleStmt {puts("SimpleStmt");}
   | ReturnStmt {puts("ReturnStmt");}
   | Block {puts("Block");}
