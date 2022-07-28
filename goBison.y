@@ -120,7 +120,6 @@ TopLevelDeclList : {$$ = new TopLevelDeclList_();}
 $$ = new TopLevelDeclList_($1, $2);}
   ;
 
-// vul aan met producties
 Block : LBRACE StatementList RBRACE {puts("LBRACE StatementList RBRACE");
 $$ = new Block_($2);}
   ;
@@ -148,11 +147,6 @@ $$ = new ExpressionList_($1);}
   | ExpressionList COMMA Expression {puts("COMMA Expression");
 $$ = new ExpressionList_($1, $3);}
   ;
-
-/*
-Declaration : VarDecl {puts("VarDecl");}
-  ;
-*/
 
 TopLevelDecl : VarDecl {puts("VarDecl");
 $$ = new TopLevelDecl_($1);}
@@ -242,15 +236,6 @@ $$ = new Literal_($1);}
 $$ = new Literal_($1);}
   ;
 
-/*
-BasicLit : INTLITERAL {puts("INTLITERAL");}
-  | BOOLLITERAL {puts("BOOLLITERAL");}
-  ;
-
-OperandName : IDENTIFIER {puts("IDENTIFIER");}
-  ;
-  */
-
 PrimaryExpr : Operand {puts("Operand");
 $$ = new PrimaryExpr_($1);}
   | PrimaryExpr Arguments {puts("PrimaryExpr Arguments");
@@ -309,31 +294,6 @@ $$ = new UnaryExpr_($1);}
 $$ = new UnaryExpr_($1, $2);}
   ;
 
-/*
-Binary_op : OR
-  | AND
-  | Rel_op
-  | Add_op
-  | Mul_op
-  ;
-
-Rel_op : EQ
-  | NE
-  | LT
-  | LE
-  | GT
-  | GE
-  ;
-
-Add_op : PLUS
-  | MIN
-  ;
-
-Mul_op : MUL
-  | DIV
-  ;
-  */
-
 Unary_op : PLUS %prec UMINUS {puts("PLUS");
 $$ = new Unary_op_("plus");}
   | MIN %prec UMINUS {puts("MIN");
@@ -369,14 +329,6 @@ $$ = new SimpleStmt_($1);}
 $$ = new SimpleStmt_($1);}
   ;
 
-/*
-EmptyStmt : 
-  ;
-
-ExpressionStmt : Expression {puts("Expression");}
-  ;
-  */
-
 IncDecStmt : Expression INC {puts("Expression INC");
 $$ = new IncDecStmt_($1, "inc");}
   | Expression DEC {puts("Expression DEC");
@@ -394,14 +346,6 @@ $$ = new Assignment_($1, "divassign", $3);}
   | ExpressionList ASSIGN ExpressionList {puts("ExpressionList ASSIGN ExpressionList");
 $$ = new Assignment_($1, "assign", $3);}
   ;
-
-/*
-Assign_op : PLUSASSIGN {puts("PLUSASSIGN");}
-  | MINASSIGN {puts("MINASSIGN");}
-  | MULASSIGN {puts("MULASSIGN");}
-  | DIVASSIGN {puts("DIVASSIGN");}
-  ;
-*/
 
 ReturnStmt : RETURN {puts("RETURN");
 $$ = new ReturnStmt_();}
@@ -437,14 +381,6 @@ $$ = new ForClause_($1, $3, $5);}
 $$ = new ForClause_($1, $4);}
   ;
 
-/*
-InitStmt : SimpleStmt {puts("SimpleStmt");}
-  ;
-
-PostStmt : SimpleStmt {puts("SimpleStmt");}
-  ;
-  */
-
 //////////////////////////////////////////////
 
 //PACKAGES
@@ -452,11 +388,6 @@ PostStmt : SimpleStmt {puts("SimpleStmt");}
 PackageClause : PACKAGE IDENTIFIER {puts("PACKAGE IDENTIFIER");
 $$ = new PackageClause_($2);}
   ;
-
-/*
-PackageName : IDENTIFIER {puts("IDENTIFIER");}
-  ;
-*/
 
 %%
 

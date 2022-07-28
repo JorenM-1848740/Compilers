@@ -1,0 +1,3 @@
+Var declaratie voor functie: verschil scope?
+Parameters als result van functie ipv type
+composite literals

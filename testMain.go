@@ -14,7 +14,7 @@ func main(){
         if i==2{
 
         }
-        nextTerm = t1 + t2
+        nextTerm = t1 && t2
         t1=t2
         t2=nextTerm
     }
