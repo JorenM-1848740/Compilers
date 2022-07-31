@@ -1,10 +1,13 @@
 package main
 
-var t3 = 0
+var (t3, t4 int; t5 bool;);
+var (a int; b bool;)
+var c, d, e int;
 
 func main(){
     var n int;
     var t1 = 0
+    var ()
     true(a, b)
     var t2 = 1
     var nextTerm = 0

@@ -16,3 +16,14 @@ IdentifierList_::IdentifierList_(IdentifierList il, const char* i){
 IdentifierList_::IdentifierList_(const char* i){
     identifier = i;
 }
+
+void IdentifierList_::getIdentifiers(vector<string>& identifiers){
+    //If there is only one identifier
+    if (identifierList == nullptr){
+        identifiers.push_back(identifier);
+    }
+    else{
+        identifiers.push_back(identifier);
+        identifierList->getIdentifiers(identifiers);
+    }
+}

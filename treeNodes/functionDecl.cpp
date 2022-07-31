@@ -22,6 +22,10 @@ FunctionDecl_::FunctionDecl_(const char* fn, Signature s){
 }
 
 void FunctionDecl_::saveSignatures(vector<Scope>& scopeStack){
-
     scopeStack.at(0)->addFunctionSignature(functionName, signature);
+}
+
+void FunctionDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //Signature already added to scope previously, typecheck body
+
 }

@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 #include <iostream>
-//#include "./treeClasses/scope.hpp"
 
 using namespace std;
 
@@ -87,6 +86,7 @@ struct SourceFile_ {
     PackageClause packageClause = nullptr;
     TopLevelDeclList topLevelDeclList = nullptr;
     vector<Scope> scopeStack;
+    vector<string> typeErrors;
 
     SourceFile_(PackageClause p, TopLevelDeclList t);
 
@@ -94,6 +94,8 @@ struct SourceFile_ {
 
     void saveSignatures();
     void printScopeStack();
+    void printTypeErrors();
+    void typeCheck();
 };
 
 struct PackageClause_{
@@ -113,6 +115,7 @@ struct TopLevelDeclList_{
     void print(int d);
 
     void saveSignatures(vector<Scope>& scopeStack);
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct TopLevelDecl_{
@@ -125,6 +128,7 @@ struct TopLevelDecl_{
     void print(int d);
 
     void saveSignatures(vector<Scope>& scopeStack);
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 
@@ -136,6 +140,7 @@ struct VarDecl_{
     VarDecl_(VarSpecList vsl);
 
     void print(int d);
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct VarSpec_{
@@ -148,6 +153,7 @@ struct VarSpec_{
     VarSpec_(IdentifierList il, Type t, ExpressionList el);
 
     void print(int d);
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct VarSpecList_{
@@ -159,6 +165,7 @@ struct VarSpecList_{
     VarSpecList_(VarSpecList vsl, VarSpec vs);
 
     void print(int d);
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct ExpressionList_{
@@ -180,6 +187,7 @@ struct IdentifierList_{
     IdentifierList_(const char* i);
 
     void print(int d);
+    void getIdentifiers(vector<string>& identifiers);
 };
 
 struct Type_{
@@ -188,6 +196,7 @@ struct Type_{
     Type_(const char* t);
 
     void print(int d);
+    string getType();
 };
 
 struct FunctionDecl_{
@@ -201,6 +210,7 @@ struct FunctionDecl_{
     void print(int d);
 
     void saveSignatures(vector<Scope>& scopeStack);
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct Signature_{

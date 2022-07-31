@@ -25,3 +25,15 @@ void TopLevelDecl_::saveSignatures(vector<Scope>& scopeStack){
     }
 
 }
+
+void TopLevelDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If declaration is a function declaration
+    if (functionDecl != nullptr){
+        functionDecl->typeCheck(scopeStack, typeErrors);
+    }
+
+    //If declaration is a variable declaration
+    if (varDecl != nullptr){
+        varDecl->typeCheck(scopeStack, typeErrors);
+    }
+}

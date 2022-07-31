@@ -3,23 +3,19 @@
 
 #include <map>
 #include <string>
-//#include "../absyn.hpp"
 using namespace std;
 
 struct Signature_;
 typedef Signature_ *Signature;
 
-struct Scope_;
-typedef Scope_ *Scope;
-
 struct Scope_ {
 
-    map<string, string> variableMap;
+    map<string, std::pair<string, string>> variableMap;
     map<string, Signature> functionMap;
 
-    string getVariableValue(string identifier);
+    std::pair<string, string> getVariableValue(string identifier);
 
-    void addVariableValue(string identifier, string value);
+    void addVariableValue(string identifier, string type, string value);
 
     Signature getFunctionSignature(string identifier);
 

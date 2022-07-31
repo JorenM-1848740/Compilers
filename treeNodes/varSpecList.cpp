@@ -18,3 +18,11 @@ VarSpecList_::VarSpecList_(VarSpecList vsl, VarSpec vs){
     varSpecList = vsl;
     varSpec = vs;
 }
+
+void VarSpecList_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If there are var specifications in the list
+    if (varSpecList != nullptr){
+        varSpecList->typeCheck(scopeStack, typeErrors);
+        varSpec->typeCheck(scopeStack, typeErrors);
+    }
+}

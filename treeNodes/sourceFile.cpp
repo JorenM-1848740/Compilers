@@ -17,10 +17,21 @@ void SourceFile_::saveSignatures(){
     topLevelDeclList->saveSignatures(scopeStack);
 }
 
+void SourceFile_::typeCheck(){
+    topLevelDeclList->typeCheck(scopeStack, typeErrors);
+}
+
 void SourceFile_::printScopeStack(){
+    cout << "\n\n\n";
     for (int i = 0; i < scopeStack.size();++i){
         cout << "Scope " << i << "\n";
         scopeStack.at(i)->print();
         cout << "\n";
+    }
+}
+
+void SourceFile_::printTypeErrors(){
+    for (int i = 0; i < typeErrors.size();++i){
+        cout << "Error " << i+1 << ": " << typeErrors[i] << "\n";
     }
 }

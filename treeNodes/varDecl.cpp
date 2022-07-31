@@ -16,3 +16,14 @@ VarDecl_::VarDecl_(VarSpec vs){
 VarDecl_::VarDecl_(VarSpecList vsl){
     varSpecList = vsl;
 }
+
+void VarDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If there is only one var specification
+    if (varSpec != nullptr){
+        varSpec->typeCheck(scopeStack, typeErrors);
+    }
+    //If there are multiple var specifications
+    if (varSpecList != nullptr){
+        varSpecList->typeCheck(scopeStack, typeErrors);
+    }
+}

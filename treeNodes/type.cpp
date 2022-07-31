@@ -7,3 +7,7 @@ void Type_::print(int d){
 Type_::Type_(const char* t){
     type = t;
 }
+
+string Type_::getType(){
+    return type;
+}
