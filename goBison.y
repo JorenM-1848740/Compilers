@@ -139,7 +139,7 @@ Type : INT {puts("INT");
 $$ = new Type_("int");}
   | BOOL {puts("BOOL");
 $$ = new Type_("bool");}
-  //| LPAREN Type RPAREN {puts("LPAREN Type RPAREN");}
+  | LPAREN Type RPAREN {puts("LPAREN Type RPAREN");}
   ;
 
 ExpressionList : Expression {puts("Expression");
@@ -238,7 +238,7 @@ $$ = new Literal_($1);}
 
 PrimaryExpr : Operand {puts("Operand");
 $$ = new PrimaryExpr_($1);}
-  | PrimaryExpr Arguments {puts("PrimaryExpr Arguments");
+  | PrimaryExpr Arguments {puts("PrimaryExpr Arguments"); //Function call
 $$ = new PrimaryExpr_($1, $2);}
   ;
 

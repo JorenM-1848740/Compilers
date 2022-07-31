@@ -17,3 +17,11 @@ void TopLevelDeclList_::print(int d){
         topLevelDecl->print(d+1);
     };
 }
+
+void TopLevelDeclList_::saveSignatures(vector<Scope>& scopeStack){
+    //If there is at least one top level decleration
+    if (topLevelDecl != nullptr){
+        topLevelDecl->saveSignatures(scopeStack);
+        topLevelDeclList->saveSignatures(scopeStack);
+    }
+}

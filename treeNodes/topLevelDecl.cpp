@@ -17,3 +17,11 @@ void TopLevelDecl_::print(int d){
         functionDecl->print(d+1);
     };
 }
+
+void TopLevelDecl_::saveSignatures(vector<Scope>& scopeStack){
+    //If declaration is a function declaration
+    if (functionDecl != nullptr){
+        functionDecl->saveSignatures(scopeStack);
+    }
+
+}

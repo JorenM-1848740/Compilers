@@ -1,3 +1,11 @@
-Var declaratie voor functie: verschil scope?
-Parameters als result van functie ipv type
-composite literals
+Var declaratie voor functie: verschil scope?: ja
+Parameters als result van functie ipv type: ja
+composite literals: nee
+
+
+
+
+Typechecker: 1) eerst signatures opslaan, 2) daarna nog eens door de boom gaan
+Typechecker: Stap 2: Variableen pushen op stack: scopes controleren
+Typechecker: Stap 2 taken: Scopes checken, assignments/expressies checken, function calls checken
+Interpreter: geen problemen meer met scope: typechecker heeft problemen al gedetecteerd

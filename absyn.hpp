@@ -4,10 +4,14 @@
 #include <vector>
 #include <string>
 #include <iostream>
+//#include "./treeClasses/scope.hpp"
 
 using namespace std;
 
 extern int printWidth;
+
+struct Scope_;
+typedef Scope_ *Scope;
 
 struct SourceFile_;
 struct PackageClause_;
@@ -82,10 +86,14 @@ typedef Unary_op_ *Unary_op;
 struct SourceFile_ {
     PackageClause packageClause = nullptr;
     TopLevelDeclList topLevelDeclList = nullptr;
+    vector<Scope> scopeStack;
 
     SourceFile_(PackageClause p, TopLevelDeclList t);
 
     void print(int d);
+
+    void saveSignatures();
+    void printScopeStack();
 };
 
 struct PackageClause_{
@@ -103,6 +111,8 @@ struct TopLevelDeclList_{
     TopLevelDeclList_();
 
     void print(int d);
+
+    void saveSignatures(vector<Scope>& scopeStack);
 };
 
 struct TopLevelDecl_{
@@ -113,6 +123,8 @@ struct TopLevelDecl_{
     TopLevelDecl_(FunctionDecl fd);
 
     void print(int d);
+
+    void saveSignatures(vector<Scope>& scopeStack);
 };
 
 
@@ -187,6 +199,8 @@ struct FunctionDecl_{
     FunctionDecl_(const char* fn, Signature s);
 
     void print(int d);
+
+    void saveSignatures(vector<Scope>& scopeStack);
 };
 
 struct Signature_{

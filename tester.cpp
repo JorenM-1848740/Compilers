@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 {
   
   // int tokenid;
-  yyin = fopen("testMain.go", "r");
+  yyin = fopen(argv[1], "r");
   
   // /* If we de not explicitly bind yyin to a file, stdin is assumed. */
   // while (tokenid=yylex()){
@@ -40,5 +40,7 @@ int main(int argc, char* argv[])
   // return 0;
   yyparse();
   thesyntree->print(0);
+  thesyntree->saveSignatures();
+  thesyntree->printScopeStack();
   return 0;
 }
