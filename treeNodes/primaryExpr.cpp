@@ -19,3 +19,14 @@ void PrimaryExpr_::print(int d){
     }
 
 }
+
+string PrimaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If expression is not a function call
+    if (arguments == nullptr){
+        return operand->getType(scopeStack, typeErrors);
+    }
+    //TODO If expression is a function call
+    else{
+        return "";
+    }
+}

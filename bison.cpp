@@ -1820,14 +1820,14 @@ yyreduce:
   case 40:
 #line 233 "goBison.y"
                      {puts("INTLITERAL");
-(yyval.literal) = new Literal_((yyvsp[0].id));}
+(yyval.literal) = new Literal_((yyvsp[0].id), "int");}
 #line 1825 "bison.cpp"
     break;
 
   case 41:
 #line 235 "goBison.y"
                 {puts("BOOLLITERAL");
-(yyval.literal) = new Literal_((yyvsp[0].id));}
+(yyval.literal) = new Literal_((yyvsp[0].id), "bool");}
 #line 1832 "bison.cpp"
     break;
 

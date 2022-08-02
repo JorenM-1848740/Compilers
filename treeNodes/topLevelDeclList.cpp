@@ -29,7 +29,7 @@ void TopLevelDeclList_::saveSignatures(vector<Scope>& scopeStack){
 void TopLevelDeclList_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
     //If there is at least one top level decleration
     if (topLevelDecl != nullptr){
-        topLevelDecl->typeCheck(scopeStack, typeErrors);
         topLevelDeclList->typeCheck(scopeStack, typeErrors);
+        topLevelDecl->typeCheck(scopeStack, typeErrors);
     }
 }

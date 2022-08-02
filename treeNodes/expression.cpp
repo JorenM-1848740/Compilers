@@ -21,3 +21,16 @@ Expression_::Expression_(Expression e1, const char* o, Expression e2){
     op = o;
     expression2 = e2;
 }
+
+string Expression_::getType(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If expression is a unary expression
+    if (unaryExpr != nullptr){
+        return unaryExpr->getType(scopeStack, typeErrors);
+    }
+    //If expression is a compound expression
+    else{
+        string type1 = expression1->getType(scopeStack, typeErrors);
+        string type2 = expression2->getType(scopeStack, typeErrors);
+    }
+    return "int";
+}

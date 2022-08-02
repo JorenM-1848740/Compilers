@@ -231,9 +231,9 @@ $$ = new Operand_($2);}
   ;
 
 Literal : INTLITERAL {puts("INTLITERAL");
-$$ = new Literal_($1);}
+$$ = new Literal_($1, "int");}
   | BOOLLITERAL {puts("BOOLLITERAL");
-$$ = new Literal_($1);}
+$$ = new Literal_($1, "bool");}
   ;
 
 PrimaryExpr : Operand {puts("Operand");

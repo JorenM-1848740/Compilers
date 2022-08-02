@@ -7,3 +7,7 @@ Unary_op_::Unary_op_(const char* uo){
 void Unary_op_::print(int d){
     std::cout << std::string(d*printWidth, ' ') << "Unary_op: " << unary_op << "\n";
 }
+
+string Unary_op_::getOperatorName(){
+    return unary_op;
+}

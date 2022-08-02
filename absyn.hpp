@@ -175,6 +175,8 @@ struct ExpressionList_{
     ExpressionList_(ExpressionList el, Expression e);
     ExpressionList_(Expression e);
 
+    void getTypes(vector<Scope>& scopeStack, vector<string>& typeErrors, vector<string>& types);
+
     void print(int d);
 };
 
@@ -401,6 +403,8 @@ struct Expression_{
     Expression_(UnaryExpr ue);
     Expression_(Expression e1, const char* o, Expression e2);
 
+    string getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+
     void print(int d);
 };
 
@@ -414,12 +418,16 @@ struct Operand_{
     Operand_(Expression e);
 
     void print(int d);
+
+    string getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct Literal_{
     string literal = "";
+    string literalType = "";
 
-    Literal_(const char* l);
+    Literal_(const char* l, const char* lt);
+    string getLiteralType();
 
     void print(int d);
 };
@@ -431,6 +439,8 @@ struct PrimaryExpr_{
 
     PrimaryExpr_(Operand o);
     PrimaryExpr_(PrimaryExpr pe, Arguments a);
+
+    string getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
 
     void print(int d);
 };
@@ -455,6 +465,8 @@ struct UnaryExpr_{
     UnaryExpr_(PrimaryExpr pe);
     UnaryExpr_(Unary_op uo, UnaryExpr ue);
 
+    string getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+
     void print(int d);
 };
 
@@ -464,6 +476,8 @@ struct Unary_op_{
     Unary_op_(const char* uo);
 
     void print(int d);
+
+    string getOperatorName();
 };
 
 

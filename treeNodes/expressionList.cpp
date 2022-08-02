@@ -15,3 +15,13 @@ ExpressionList_::ExpressionList_(ExpressionList el, Expression e){
 ExpressionList_::ExpressionList_(Expression e){
     expression = e;
 }
+
+void ExpressionList_::getTypes(vector<Scope>& scopeStack, vector<string>& typeErrors, vector<string>& types){
+    if (expressionList == nullptr){
+        types.push_back(expression->getType(scopeStack, typeErrors));
+    }
+    else{
+        types.push_back(expression->getType(scopeStack, typeErrors));
+        expressionList->getTypes(scopeStack, typeErrors, types);
+    }
+}

@@ -12,6 +12,14 @@ Interpreter: geen problemen meer met scope: typechecker heeft problemen al gedet
 
 
 Vragen:
-    Ooit meer dan 2 scopes op stack tijdens typechecken?
-    Types bijhouden op stack?
-    redefinitie van dezelfde var? moet dit afgehandeld worden?
+    Ooit meer dan 2 scopes op stack tijdens typechecken?: ja
+    Types bijhouden op stack?: ja
+    redefinitie van dezelfde var? moet dit afgehandeld worden? Mag niet
+    Meerdere soorten scopes? (If/for vs functies)
+
+
+
+TODO:
+    Vragne stellen aan Sebe
+    Var declaratie typechecking afmaken
+    Errors beter afhandelen

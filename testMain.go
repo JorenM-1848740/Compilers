@@ -1,8 +1,9 @@
 package main
 
-var (t3, t4 int; t5 bool;);
+var (t3, t4 int = 3, 5; t5 int = 6;);
 var (a int; b bool;)
-var c, d, e int;
+var c, d, e bool;
+var k int = x;
 
 func main(){
     var n int;
