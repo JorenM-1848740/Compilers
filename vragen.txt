@@ -20,7 +20,9 @@ Vragen:
 
 
 TODO:
-    Vragne stellen aan Sebe: DONE
-    Var declaratie typechecking afmaken (binary expressions): DONE
-    Errors beter afhandelen: DONE
-    varspec: herdefinitie var afhandelen: DONE
+    Functie namen mogen niet duplicate zijn
+    functie parameters mogen niet duplicate zijn: DONE
+    checken of parameters en returnswaardes allemaal named of unnamed zijn: DONE
+    Checken of er een result statement is: DONE (enkel nog testen)
+    Alle statements typechecken
+    (type) parse bug oplossen

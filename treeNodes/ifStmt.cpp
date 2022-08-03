@@ -50,3 +50,18 @@ void IfStmt_::print(int d){
         block2->print(d+1);
     }
 }
+
+bool IfStmt_::terminates(){
+    //If else case
+    if (block1 != nullptr && block2 != nullptr){
+        return (block1->terminates() && block2->terminates());
+    }
+    //if else if case
+    else if (ifStmt != nullptr){
+        return (block1->terminates() && ifStmt->terminates());
+    }
+    //if case
+    else{
+        return (block1->terminates());
+    }
+}

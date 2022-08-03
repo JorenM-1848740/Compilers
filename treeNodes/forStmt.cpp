@@ -22,3 +22,7 @@ void ForStmt_::print(int d){
     }
     block->print(d+1);
 }
+
+bool ForStmt_::terminates(){
+    return block->terminates();
+}

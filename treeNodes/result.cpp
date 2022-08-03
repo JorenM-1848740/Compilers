@@ -17,3 +17,15 @@ void Result_::print(int d){
         type->print(d+1);
     }
 }
+
+void Result_::getParameters(vector<std::pair<string, string>>& parameterVector){
+    
+    //If return is a single type
+    if (type != nullptr){
+        parameterVector.push_back(std::pair<string, string>("", type->getType()));
+    }
+    //all other cases
+    else{       
+        parameters->getParameters(parameterVector);
+    }
+}

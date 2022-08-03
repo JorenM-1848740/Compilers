@@ -139,7 +139,7 @@ Type : INT {puts("INT");
 $$ = new Type_("int");}
   | BOOL {puts("BOOL");
 $$ = new Type_("bool");}
-  | LPAREN Type RPAREN {puts("LPAREN Type RPAREN");}
+  //| LPAREN Type RPAREN {puts("LPAREN Type RPAREN");}
   ;
 
 ExpressionList : Expression {puts("Expression");
@@ -181,9 +181,7 @@ $$ = new VarSpec_($1, $2, $4);}
 
 //FUNCTION DECLARATION
 
-FunctionDecl : FUNC IDENTIFIER Signature {puts("FUNC FunctionName Signature");
-$$ = new FunctionDecl_($2, $3);}
-  | FUNC IDENTIFIER Signature Block {puts("FUNC FunctionName Signature FunctionBody");
+FunctionDecl : FUNC IDENTIFIER Signature Block {puts("FUNC FunctionName Signature FunctionBody");
 $$ = new FunctionDecl_($2, $3, $4);}
   ;
 

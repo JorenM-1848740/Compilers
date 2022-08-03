@@ -41,3 +41,25 @@ void Statement_::print(int d){
         forStmt->print(d+1);
     }
 }
+
+bool Statement_::terminates(){
+    if (varDecl != nullptr){
+        return false;
+    }
+    else if (simpleStmt != nullptr){
+        return false;
+    }
+    else if (returnStmt != nullptr){
+        return true;
+    }
+    else if (block != nullptr){
+        return block->terminates();
+    }
+    else if (ifStmt != nullptr){
+        return ifStmt->terminates();
+    }
+    //For statement case
+    else{
+        return forStmt->terminates();
+    }
+}

@@ -207,7 +207,6 @@ struct FunctionDecl_{
     Block block = nullptr;
 
     FunctionDecl_(const char* fn, Signature s, Block b);
-    FunctionDecl_(const char* fn, Signature s);
 
     void print(int d);
 
@@ -224,6 +223,10 @@ struct Signature_{
     Signature_(Parameters p);
 
     void print(int d);
+
+    vector<std::pair<string, string>> getParameters();
+    vector<std::pair<string, string>> getResults();
+
 };
 
 struct Block_{
@@ -233,6 +236,10 @@ struct Block_{
     Block_(StatementList sl);
 
     void print(int d);
+
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+
+    bool terminates();
 };
 
 struct Parameters_{
@@ -243,6 +250,8 @@ struct Parameters_{
     Parameters_();
 
     void print(int d);
+
+    void getParameters(vector<std::pair<string, string>>& parameterVector);
 
 
 };
@@ -257,6 +266,8 @@ struct Result_{
 
     void print(int d);
 
+    void getParameters(vector<std::pair<string, string>>& parameterVector);
+
 };
 
 struct ParameterList_{
@@ -269,6 +280,8 @@ struct ParameterList_{
 
     void print(int d);
 
+    void getParameters(vector<std::pair<string, string>>& parameterVector);
+
 };
 
 struct ParameterDecl_{
@@ -280,6 +293,8 @@ struct ParameterDecl_{
     ParameterDecl_(Type t);
 
     void print(int d);
+
+    vector<std::pair<string, string>> getParameters();
 };
 
 struct StatementList_{
@@ -290,6 +305,8 @@ struct StatementList_{
     StatementList_(StatementList sl, Statement s);
 
     void print(int d);
+
+    bool terminates();
 };
 
 struct Statement_{
@@ -309,6 +326,8 @@ struct Statement_{
     Statement_(ForStmt fs);
 
     void print(int d);
+
+    bool terminates();
 };
 
 struct SimpleStmt_{
@@ -349,6 +368,8 @@ struct IfStmt_{
 
     void print(int d);
 
+    bool terminates();
+
 
 };
 
@@ -362,6 +383,8 @@ struct ForStmt_{
     ForStmt_(ForClause fc, Block b);
 
     void print(int d);
+
+    bool terminates();
 };
 
 struct IncDecStmt_{

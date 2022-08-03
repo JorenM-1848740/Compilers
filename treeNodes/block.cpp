@@ -8,3 +8,11 @@ void Block_::print(int d){
 Block_::Block_(StatementList sl){
     statementList = sl;
 }
+
+void Block_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    return;
+}
+
+bool Block_::terminates(){
+    return statementList->terminates();
+}

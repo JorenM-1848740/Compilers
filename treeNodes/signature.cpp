@@ -15,3 +15,18 @@ Signature_::Signature_(Parameters p, Result r){
 Signature_::Signature_(Parameters p){
     parameters = p;
 }
+
+vector<std::pair<string, string>> Signature_::getParameters(){
+    vector<std::pair<string, string>> parameterVector;
+    parameters->getParameters(parameterVector);
+    return parameterVector;
+}
+
+vector<std::pair<string, string>> Signature_::getResults(){
+    vector<std::pair<string, string>> resultVector;
+    if (result != nullptr){
+        result->getParameters(resultVector);
+    }
+    return resultVector;
+
+}

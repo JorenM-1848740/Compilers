@@ -3,10 +3,10 @@ package main
 var (t3, t4 int = 3, 5; t5 int = 6;);
 var (a int; b bool;)
 var c bool = true || false;
-var u = 3, true;
+var u, x = 3, true;
 var y = u;
 
-func main(){
+func main(a int) (b int){
     var n int;
     var t1 = 0
     var ()
@@ -26,8 +26,10 @@ func main(){
         t1=t2
         t2=nextTerm
     }
+
+    
 }
 
-func testing(){
-    
+func testing() (a bool, b int, c int){
+    return 5;
 }

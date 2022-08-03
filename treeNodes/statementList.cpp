@@ -17,3 +17,14 @@ StatementList_::StatementList_(StatementList sl, Statement s){
     statementList = sl;
     statement = s;
 }
+
+bool StatementList_::terminates(){
+    //If there are no statements
+    if (statementList == nullptr){
+        return false;
+    }
+    else{
+        //Only check if last statement returns
+        return (statement->terminates());
+    }
+}
