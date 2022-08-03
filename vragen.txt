@@ -15,11 +15,12 @@ Vragen:
     Ooit meer dan 2 scopes op stack tijdens typechecken?: ja
     Types bijhouden op stack?: ja
     redefinitie van dezelfde var? moet dit afgehandeld worden? Mag niet
-    Meerdere soorten scopes? (If/for vs functies)
+    Meerdere soorten scopes? (If/for vs functies): NEE! typechecker lost problemen op, zelfde principe bij interpreter
 
 
 
 TODO:
-    Vragne stellen aan Sebe
-    Var declaratie typechecking afmaken
-    Errors beter afhandelen
+    Vragne stellen aan Sebe: DONE
+    Var declaratie typechecking afmaken (binary expressions): DONE
+    Errors beter afhandelen: DONE
+    varspec: herdefinitie var afhandelen: DONE

@@ -31,6 +31,26 @@ string Expression_::getType(vector<Scope>& scopeStack, vector<string>& typeError
     else{
         string type1 = expression1->getType(scopeStack, typeErrors);
         string type2 = expression2->getType(scopeStack, typeErrors);
+        if (op == "gt" || op == "ge" || op == "lt" || op == "le"){
+            if (!(type1 == "int" && type2 == "int")){
+                typeErrors.push_back("Binary operator not supported for this type!");
+            }
+        }
+        if (op == "eq" || op == "ne"){
+            if (type1 != type2){
+                typeErrors.push_back("Can't compare different types!");
+            }
+        }
+        if (op == "plus" || op == "min" || op == "mul" || op == "div"){
+            if (!(type1 == "int" && type2 == "int")){
+                typeErrors.push_back("Arithmetic operators not defined for this type!");
+            }
+        }
+        if (op == "or" || op == "and"){
+            if (!(type1 == "bool" && type2 == "bool")){
+                typeErrors.push_back("Logical operator not defined for this type");
+            }
+        }
+        return type1;
     }
-    return "int";
 }

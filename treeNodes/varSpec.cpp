@@ -36,29 +36,36 @@ void VarSpec_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
 
         vector<string> identifierNames;
         identifierList->getIdentifiers(identifierNames);
-        //Reverse identifier names (parser goes from right to left)
-        std::reverse(identifierNames.begin(), identifierNames.end());
+
         for (int i = 0; i < identifierNames.size();++i){
             //Add to most recent scope
-            scopeStack.at(scopeStack.size()-1)->addVariableValue(identifierNames[i], typeName, "");
+            try{
+                std::pair<string, string> checkValue = scopeStack.at(scopeStack.size()-1)->getVariableValue(identifierNames[i]);
+                typeErrors.push_back("Variable is already declared in this scope!");
+            }
+            catch(exception e){
+                scopeStack.at(scopeStack.size()-1)->addVariableValue(identifierNames[i], typeName, "");              
+            }          
         }
     }
     //If vars are initialised without a type
     else if (type == nullptr){
         vector<string> identifierNames;
         identifierList->getIdentifiers(identifierNames);
-        //Reverse identifier names (parser goes from right to left)
-        std::reverse(identifierNames.begin(), identifierNames.end());
 
         vector<string> types;
         expressionList->getTypes(scopeStack, typeErrors, types);
-        //Reverse expression names (parser goes from right to left)
-        std::reverse(types.begin(), types.end());
 
         if (types.size() == identifierNames.size()){
             for (int i = 0; i < identifierNames.size();++i){
                 //Add to most recent scope
-                scopeStack.at(scopeStack.size()-1)->addVariableValue(identifierNames[i], types.at(i), "");
+                try{
+                    std::pair<string, string> checkValue = scopeStack.at(scopeStack.size()-1)->getVariableValue(identifierNames[i]);
+                    typeErrors.push_back("Variable is already declared in this scope!");
+                }
+                catch(exception e){
+                    scopeStack.at(scopeStack.size()-1)->addVariableValue(identifierNames[i], types.at(i), "");
+                }             
             }
         }
         else{
@@ -71,13 +78,9 @@ void VarSpec_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
 
         vector<string> identifierNames;
         identifierList->getIdentifiers(identifierNames);
-        //Reverse identifier names (parser goes from right to left)
-        std::reverse(identifierNames.begin(), identifierNames.end());
 
         vector<string> types;
         expressionList->getTypes(scopeStack, typeErrors, types);
-        //Reverse expression names (parser goes from right to left)
-        std::reverse(types.begin(), types.end());
 
         //Check if expression list is same size as identifier list
         if (types.size() == identifierNames.size()){
@@ -90,7 +93,13 @@ void VarSpec_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
 
             for (int i = 0; i < identifierNames.size();++i){
                 //Add to most recent scope
-                scopeStack.at(scopeStack.size()-1)->addVariableValue(identifierNames[i], typeName, "");
+                try{
+                    std::pair<string, string> checkValue = scopeStack.at(scopeStack.size()-1)->getVariableValue(identifierNames[i]);
+                    typeErrors.push_back("Variable is already declared in this scope!");
+                }
+                catch(exception e){
+                    scopeStack.at(scopeStack.size()-1)->addVariableValue(identifierNames[i], typeName, "");
+                }
             }
         }
         else{

@@ -27,5 +27,5 @@ void FunctionDecl_::saveSignatures(vector<Scope>& scopeStack){
 
 void FunctionDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
     //Signature already added to scope previously, typecheck body
-
+    
 }

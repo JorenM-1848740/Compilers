@@ -21,7 +21,7 @@ void ExpressionList_::getTypes(vector<Scope>& scopeStack, vector<string>& typeEr
         types.push_back(expression->getType(scopeStack, typeErrors));
     }
     else{
-        types.push_back(expression->getType(scopeStack, typeErrors));
         expressionList->getTypes(scopeStack, typeErrors, types);
+        types.push_back(expression->getType(scopeStack, typeErrors));     
     }
 }

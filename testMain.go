@@ -2,8 +2,9 @@ package main
 
 var (t3, t4 int = 3, 5; t5 int = 6;);
 var (a int; b bool;)
-var c, d, e bool;
-var k int = x;
+var c bool = true || false;
+var u = 3, true;
+var y = u;
 
 func main(){
     var n int;

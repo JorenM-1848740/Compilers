@@ -37,6 +37,7 @@ string Operand_::getType(vector<Scope>& scopeStack, vector<string>& typeErrors){
     else{
         bool found = false;
         std::pair<string, string> typeValue;
+        //Find variable in scope stack, starting from most recent scope
         for (int i = 0; i < scopeStack.size();++i){
             try{
                 typeValue = scopeStack[scopeStack.size()-1-i]->getVariableValue(id);
@@ -48,7 +49,7 @@ string Operand_::getType(vector<Scope>& scopeStack, vector<string>& typeErrors){
         }
 
         if (found){
-            return typeValue.first;
+            return typeValue.first;           
         }
         else{
             typeErrors.push_back("Variable is not declared!");

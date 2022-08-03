@@ -23,7 +23,7 @@ void IdentifierList_::getIdentifiers(vector<string>& identifiers){
         identifiers.push_back(identifier);
     }
     else{
-        identifiers.push_back(identifier);
         identifierList->getIdentifiers(identifiers);
+        identifiers.push_back(identifier);      
     }
 }
