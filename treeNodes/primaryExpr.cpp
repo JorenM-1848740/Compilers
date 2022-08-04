@@ -1,4 +1,5 @@
 #include "../absyn.hpp"
+#include "../treeClasses/scope.hpp"
 
 PrimaryExpr_::PrimaryExpr_(Operand o){
     operand = o;
@@ -20,12 +21,81 @@ void PrimaryExpr_::print(int d){
 
 }
 
-string PrimaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& typeErrors){
+vector<string> PrimaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& typeErrors){
     //If expression is not a function call
     if (arguments == nullptr){
         return operand->getType(scopeStack, typeErrors);
     }
-    //TODO If expression is a function call
+    //If expression is a function call
+    else{
+        vector<vector<string>> types = arguments->getArgumentTypes(scopeStack, typeErrors);
+
+        bool allSingleValued = true;
+        for (int i = 0; i < types.size();++i){
+            if (types[i].size() != 1){
+                allSingleValued = false;
+                break;
+            }
+        }
+
+        //If arguments are single valued expressions
+        if(allSingleValued){
+            string functionName = primaryExpr->getId();
+            if (functionName != ""){
+                //Search for function on scope stack
+                try{
+                    Signature signature = scopeStack[0]->getFunctionSignature(functionName);
+                    vector<std::pair<string, string>> signatureParameters = signature->getParameters();
+                    vector<std::pair<string, string>> signatureResults = signature->getResults();
+                    //Check if arguments are same size as parameters
+                    if (types.size() != signatureParameters.size()){
+                        typeErrors.push_back("Argument list different size as parameter list!");
+                        return {};
+                    }
+                    else{
+                        //Check if types correspond
+                        for (int i = 0; i < types.size();++i){
+                            if (types[i][0] != signatureParameters[i].second){
+                                typeErrors.push_back("Argument types don't correspond with parameter types");
+                                return {};
+                            }
+                        }
+
+                        //If everything is correct
+                        vector<string> returnTypes;
+                        for (int i = 0; i < signatureResults.size();++i){
+                            returnTypes.push_back(signatureResults[i].second);
+                        }
+
+                        return returnTypes;
+                    }
+
+                }
+                catch (exception e){
+                    typeErrors.push_back("Function call references non existent function!");
+                    return {};
+                }
+                
+            }
+            else{
+                //TODO: Not only identifier as function name? Pointers?
+                typeErrors.push_back("TODO: not only identifier as function name (pointers)!");
+                return {};
+            }
+        }
+        else{
+            //TODO: Function call inside of function call
+            typeErrors.push_back("Multi valued expressions not allowed in function call!");
+            return {};
+        }
+
+    }
+}
+
+string PrimaryExpr_::getId(){
+    if (operand != nullptr){
+        return operand->getId();
+    }
     else{
         return "";
     }

@@ -19,10 +19,12 @@ Vragen:
 
 
 
-TODO:
-    Functie namen mogen niet duplicate zijn
-    functie parameters mogen niet duplicate zijn: DONE
-    checken of parameters en returnswaardes allemaal named of unnamed zijn: DONE
-    Checken of er een result statement is: DONE (enkel nog testen)
+TODO:  
+    Function call typechecken: DONE
     Alle statements typechecken
+
+    //MINDER BELANGRIJK MOMENTEEL
+    Functie namen mogen niet duplicate zijn
+    Print functie implementeren
     (type) parse bug oplossen
+    Functie call in functie call (multi valued expression in functie call)

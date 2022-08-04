@@ -24,10 +24,12 @@ void Operand_::print(int d){
     }
 }
 
-string Operand_::getType(vector<Scope>& scopeStack, vector<string>& typeErrors){
+vector<string> Operand_::getType(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    vector<string> types;
     //If operand is a literal
     if (literal != nullptr){
-        return literal->getLiteralType();
+        types.push_back(literal->getLiteralType());
+        return types;
     }
     //If operand is an expression
     else if (expression != nullptr){
@@ -49,12 +51,17 @@ string Operand_::getType(vector<Scope>& scopeStack, vector<string>& typeErrors){
         }
 
         if (found){
-            return typeValue.first;           
+            types.push_back(typeValue.first);
+            return types;           
         }
         else{
             typeErrors.push_back("Variable is not declared!");
-            return "";
+            return {};
         }
 
     }
+}
+
+string Operand_::getId(){
+    return id;
 }

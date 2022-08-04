@@ -175,7 +175,7 @@ struct ExpressionList_{
     ExpressionList_(ExpressionList el, Expression e);
     ExpressionList_(Expression e);
 
-    void getTypes(vector<Scope>& scopeStack, vector<string>& typeErrors, vector<string>& types);
+    void getTypes(vector<Scope>& scopeStack, vector<string>& typeErrors, vector<vector<string>>& types);
 
     void print(int d);
 };
@@ -415,6 +415,8 @@ struct ForClause_{
     ForClause_(SimpleStmt ss1, Expression e, SimpleStmt ss2);
 
     void print(int d);
+
+    bool hasCondition();
 };
 
 struct Expression_{
@@ -426,7 +428,7 @@ struct Expression_{
     Expression_(UnaryExpr ue);
     Expression_(Expression e1, const char* o, Expression e2);
 
-    string getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    vector<string> getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
 
     void print(int d);
 };
@@ -442,7 +444,9 @@ struct Operand_{
 
     void print(int d);
 
-    string getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    vector<string> getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+
+    string getId();
 };
 
 struct Literal_{
@@ -463,7 +467,9 @@ struct PrimaryExpr_{
     PrimaryExpr_(Operand o);
     PrimaryExpr_(PrimaryExpr pe, Arguments a);
 
-    string getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    vector<string> getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+
+    string getId();
 
     void print(int d);
 };
@@ -474,10 +480,10 @@ struct Arguments_{
 
     Arguments_();
     Arguments_(ExpressionList el);
-    Arguments_(Type t);
-    Arguments_(Type t, ExpressionList el);
 
     void print(int d);
+
+    vector<vector<string>> getArgumentTypes(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct UnaryExpr_{
@@ -488,7 +494,7 @@ struct UnaryExpr_{
     UnaryExpr_(PrimaryExpr pe);
     UnaryExpr_(Unary_op uo, UnaryExpr ue);
 
-    string getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    vector<string> getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
 
     void print(int d);
 };

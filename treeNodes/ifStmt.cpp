@@ -52,6 +52,7 @@ void IfStmt_::print(int d){
 }
 
 bool IfStmt_::terminates(){
+    //Based on go specs related to terminating statements
     //If else case
     if (block1 != nullptr && block2 != nullptr){
         return (block1->terminates() && block2->terminates());
@@ -62,6 +63,6 @@ bool IfStmt_::terminates(){
     }
     //if case
     else{
-        return (block1->terminates());
+        return false;
     }
 }

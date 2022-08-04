@@ -534,16 +534,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  5
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   369
+#define YYLAST   332
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  42
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  34
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  98
+#define YYNRULES  94
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  163
+#define YYNSTATES  155
 
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   296
@@ -598,12 +598,12 @@ static const yytype_int16 yyrline[] =
      138,   140,   145,   147,   151,   153,   159,   161,   165,   166,
      170,   172,   174,   184,   188,   190,   194,   196,   200,   202,
      204,   207,   209,   213,   215,   223,   225,   227,   231,   233,
-     237,   239,   243,   245,   247,   249,   251,   253,   255,   257,
-     261,   263,   265,   267,   269,   271,   273,   275,   277,   279,
-     281,   283,   285,   289,   291,   295,   297,   299,   306,   308,
-     310,   312,   314,   316,   320,   322,   324,   326,   330,   332,
-     336,   338,   340,   342,   344,   348,   350,   354,   356,   358,
-     360,   362,   364,   368,   370,   372,   376,   378,   386
+     237,   239,   243,   245,   247,   249,   253,   255,   257,   259,
+     261,   263,   265,   267,   269,   271,   273,   275,   277,   281,
+     283,   287,   289,   291,   298,   300,   302,   304,   306,   308,
+     312,   314,   316,   318,   322,   324,   328,   330,   332,   334,
+     336,   340,   342,   346,   348,   350,   352,   354,   356,   360,
+     362,   364,   368,   370,   378
 };
 #endif
 
@@ -641,12 +641,12 @@ static const yytype_int16 yytoknum[] =
 };
 # endif
 
-#define YYPACT_NINF (-142)
+#define YYPACT_NINF (-135)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
 
-#define YYTABLE_NINF (-76)
+#define YYTABLE_NINF (-72)
 
 #define yytable_value_is_error(Yyn) \
   0
@@ -655,23 +655,22 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-      -2,   -30,    11,    18,  -142,  -142,  -142,    49,     5,   -11,
-      50,  -142,  -142,  -142,  -142,   113,  -142,    46,  -142,    41,
-      26,  -142,  -142,   246,    59,    10,    52,    86,  -142,    73,
-    -142,   246,  -142,  -142,  -142,  -142,  -142,  -142,    94,  -142,
-    -142,    76,   304,  -142,   246,   246,  -142,    90,  -142,     2,
-    -142,  -142,  -142,  -142,  -142,  -142,  -142,   260,   246,   117,
-    -142,   246,   246,   246,   246,   246,   246,   246,   246,   246,
-     246,   246,   246,  -142,    94,  -142,    58,  -142,   209,  -142,
-     304,    91,  -142,     8,     9,    51,    51,  -142,  -142,   331,
-     325,   182,   182,   182,   182,   182,   182,  -142,  -142,   246,
-     246,    63,  -142,  -142,   120,  -142,   134,    98,  -142,  -142,
-    -142,  -142,  -142,  -142,  -142,   215,  -142,   222,  -142,    94,
-     157,   102,  -142,   157,   105,    52,   246,   246,   246,   246,
-     246,  -142,  -142,  -142,  -142,    42,  -142,   112,   246,  -142,
-      48,  -142,    94,    94,    94,    94,    94,   228,  -142,     4,
-     283,   246,   178,  -142,  -142,  -142,   115,  -142,   246,     4,
-    -142,  -142,  -142
+      15,   -21,    25,    50,  -135,  -135,  -135,    11,    43,    16,
+      57,  -135,  -135,  -135,  -135,   121,  -135,    48,  -135,   -13,
+      24,  -135,  -135,   196,    44,     4,    68,    53,  -135,    82,
+    -135,   196,  -135,  -135,  -135,  -135,  -135,  -135,    85,  -135,
+    -135,    84,   267,  -135,   196,   196,  -135,   164,  -135,     1,
+    -135,  -135,  -135,  -135,  -135,  -135,  -135,   223,   196,    60,
+    -135,   196,   196,   196,   196,   196,   196,   196,   196,   196,
+     196,   196,   196,  -135,    85,  -135,     6,  -135,   177,  -135,
+     267,    81,  -135,     9,    -6,    -6,  -135,  -135,   294,   288,
+      96,    96,    96,    96,    96,    96,  -135,  -135,   196,   196,
+     183,  -135,  -135,    69,  -135,   102,   108,  -135,  -135,  -135,
+    -135,  -135,  -135,  -135,   190,  -135,    85,   125,   109,  -135,
+     125,   126,    68,   196,   196,   196,   196,   196,  -135,  -135,
+    -135,  -135,   111,   196,  -135,    47,  -135,    85,    85,    85,
+      85,    85,    87,   246,   196,   146,  -135,  -135,   119,  -135,
+     196,    87,  -135,  -135,  -135
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -679,41 +678,40 @@ static const yytype_int16 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     0,     0,     0,    98,     1,     3,     2,     0,     0,
+       0,     0,     0,     0,    94,     1,     3,     2,     0,     0,
        0,    14,    15,    18,     8,     0,    16,     0,     4,     0,
        0,    10,    11,     0,    21,     0,     0,    24,    17,     0,
-       9,     0,    65,    66,    67,    36,    38,    39,    20,    40,
-      35,    63,    12,    50,     0,     0,    28,     0,    34,     0,
+       9,     0,    61,    62,    63,    36,    38,    39,    20,    40,
+      35,    59,    12,    46,     0,     0,    28,     0,    34,     0,
       31,     6,    23,    27,    25,    26,    19,     0,     0,     0,
       41,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,    64,    22,    33,     0,    29,    74,    37,
-      13,     0,    42,     0,     0,    53,    54,    55,    56,    52,
-      51,    57,    58,    59,    60,    61,    62,    30,    32,    85,
-      74,    74,     5,    71,     0,    68,    12,     0,    69,    76,
-      77,    70,    72,    73,    46,     0,    44,     0,    43,    86,
-      12,     0,    93,    12,     0,     0,     0,     0,     0,     0,
-       0,    78,    79,     7,    48,     0,    47,    87,     0,    94,
-       0,    95,    80,    81,    82,    83,    84,     0,    45,     0,
-       0,    74,     0,    49,    89,    88,    90,    97,    74,     0,
-      96,    92,    91
+       0,     0,     0,    60,    22,    33,     0,    29,    70,    37,
+      13,     0,    42,     0,    49,    50,    51,    52,    48,    47,
+      53,    54,    55,    56,    57,    58,    30,    32,    81,    70,
+      70,     5,    67,     0,    64,    12,     0,    65,    72,    73,
+      66,    68,    69,    44,     0,    43,    82,    12,     0,    89,
+      12,     0,     0,     0,     0,     0,     0,     0,    74,    75,
+       7,    45,    83,     0,    90,     0,    91,    76,    77,    78,
+      79,    80,     0,     0,    70,     0,    85,    84,    86,    93,
+      70,     0,    92,    88,    87
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
-    -142,  -142,  -142,   -75,  -142,   -21,    -5,   -16,  -142,    37,
-    -142,   107,  -142,  -142,  -142,   103,  -142,    53,  -142,  -142,
-    -142,  -142,   -31,    89,  -142,  -142,   -99,  -142,  -142,  -142,
-    -141,  -142,  -142,  -142
+    -135,  -135,  -135,   -71,  -135,   -24,    29,   -17,  -135,    64,
+    -135,   129,  -135,  -135,  -135,   123,  -135,    75,  -135,  -135,
+    -135,  -135,   -31,   127,  -135,  -135,   -96,  -135,  -135,  -135,
+    -134,  -135,  -135,  -135
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     2,     7,    52,    78,    15,    48,   104,    10,    11,
+      -1,     2,     7,    52,    78,    15,    48,   103,    10,    11,
       19,    16,    12,    26,    54,    27,    49,    50,    39,    40,
-      41,    60,    42,    43,    44,   107,   108,   109,   110,   111,
-     112,   113,   125,     3
+      41,    60,    42,    43,    44,   106,   107,   108,   109,   110,
+     111,   112,   122,     3
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -721,84 +719,78 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int16 yytable[] =
 {
-      57,   121,   124,   103,    47,     1,    76,    38,   155,     4,
-      24,     5,   115,   117,   100,    21,    22,    77,   162,    13,
-      51,     6,    53,   116,   118,    46,   122,    80,    17,    74,
-      85,    86,    87,    88,    89,    90,    91,    92,    93,    94,
-      95,    96,    75,    84,    14,   137,   147,   106,   139,    14,
-     141,   151,   157,    18,    83,    47,    28,   148,     8,   160,
-      25,     9,    31,    21,    22,    30,    32,    33,    51,   120,
-     123,    63,    64,    97,   154,   156,    56,    31,    34,    51,
-      14,    32,    33,   119,   161,    45,    80,    35,    36,    37,
-      59,    21,    22,    34,    20,    21,    22,    14,    58,   135,
-      25,   133,    35,    36,    37,   138,   114,   150,   140,   152,
-     142,   143,   144,   145,   146,   105,    80,    20,    21,    22,
-     106,    81,    21,    22,    58,   149,    29,   106,   159,    98,
-      55,    31,    82,    73,     0,    32,    33,   -75,     0,    23,
-       0,     0,   126,   127,   128,   129,   130,    34,     0,     0,
-     -75,     0,    61,    62,    63,    64,    35,    36,    37,     0,
-     -75,     0,    65,    66,     0,   131,   132,    67,    68,    69,
-      70,    71,    72,    51,     0,    61,    62,    63,    64,     0,
-       0,   158,     0,     0,     0,    65,    66,     0,   131,   132,
-      67,    68,    69,    70,    71,    72,    61,    62,    63,    64,
-      61,    62,    63,    64,     0,     0,    65,    66,     0,     0,
-       0,    67,    68,    69,    70,    71,    72,    99,     8,   100,
-     101,     0,     0,    31,     0,    51,   102,    32,    33,    31,
-     134,     0,     0,    32,    33,     0,    31,   136,     0,    34,
-      32,    33,    31,   153,     0,    34,    32,    33,    35,    36,
-      37,     0,    34,     0,    35,    36,    37,     0,    34,     0,
-      31,    35,    36,    37,    32,    33,     0,    35,    36,    37,
-       0,     0,     0,     0,     0,    79,    34,     0,    61,    62,
-      63,    64,     0,     0,     0,    35,    36,    37,    65,    66,
-       0,     0,     0,    67,    68,    69,    70,    71,    72,    51,
+      57,    47,    28,   118,   121,    76,    38,   102,   147,    21,
+      22,    21,    22,   114,    63,    64,    77,   154,     4,    46,
+       8,    96,     1,     9,   115,     5,    14,    80,    74,   119,
+      84,    85,    86,    87,    88,    89,    90,    91,    92,    93,
+      94,    95,    83,    14,    24,    14,   132,   105,   149,   134,
+     144,   136,    47,     6,   152,    17,    53,    13,    21,    22,
+      18,    31,    25,    30,    81,    32,    33,    25,   117,   120,
+      45,   146,   148,    58,    31,    82,    75,    34,    32,    33,
+     153,   116,    14,    80,    51,    56,    35,    36,    37,    58,
+      34,   123,   124,   125,   126,   127,   113,    99,    59,    35,
+      36,    37,   143,    51,   145,   -71,   137,   138,   139,   140,
+     141,   130,   133,   105,    61,    62,    63,    64,   -71,   105,
+      61,    62,    63,    64,   142,    20,    21,    22,   -71,   135,
+      65,    66,   151,   128,   129,    67,    68,    69,    70,    71,
+      72,    51,   104,    61,    62,    63,    64,    23,    29,   150,
+      55,    97,     0,    65,    66,     0,   128,   129,    67,    68,
+      69,    70,    71,    72,    61,    62,    63,    64,    20,    21,
+      22,    73,     0,     0,    65,    66,     0,     0,     0,    67,
+      68,    69,    70,    71,    72,    98,     8,    99,   100,     0,
+       0,    31,     0,    51,   101,    32,    33,    31,     0,    51,
+       0,    32,    33,     0,    31,   131,     0,    34,    32,    33,
+      31,     0,     0,    34,    32,    33,    35,    36,    37,     0,
+      34,     0,    35,    36,    37,     0,    34,     0,     0,    35,
+      36,    37,     0,     0,     0,    35,    36,    37,    79,     0,
        0,    61,    62,    63,    64,     0,     0,     0,     0,     0,
        0,    65,    66,     0,     0,     0,    67,    68,    69,    70,
-      71,    72,    61,    62,    63,    64,     0,     0,     0,     0,
-       0,     0,    65,    66,     0,     0,     0,    67,    68,    69,
-      70,    71,    72,    61,    62,    63,    64,     0,     0,    61,
-      62,    63,    64,    65,     0,     0,     0,     0,    67,    68,
-      69,    70,    71,    72,    67,    68,    69,    70,    71,    72
+      71,    72,    51,     0,    61,    62,    63,    64,     0,     0,
+       0,     0,     0,     0,    65,    66,     0,     0,     0,    67,
+      68,    69,    70,    71,    72,    61,    62,    63,    64,     0,
+       0,     0,     0,     0,     0,    65,    66,     0,     0,     0,
+      67,    68,    69,    70,    71,    72,    61,    62,    63,    64,
+       0,     0,    61,    62,    63,    64,    65,     0,     0,     0,
+       0,    67,    68,    69,    70,    71,    72,    67,    68,    69,
+      70,    71,    72
 };
 
 static const yytype_int16 yycheck[] =
 {
-      31,   100,   101,    78,    25,     7,     4,    23,   149,    39,
-      15,     0,     4,     4,    10,     5,     6,    15,   159,    14,
-      16,     3,    27,    15,    15,    15,   101,    58,    39,    45,
+      31,    25,    15,    99,   100,     4,    23,    78,   142,     5,
+       6,     5,     6,     4,    20,    21,    15,   151,    39,    15,
+       9,    15,     7,    12,    15,     0,    39,    58,    45,   100,
       61,    62,    63,    64,    65,    66,    67,    68,    69,    70,
-      71,    72,    47,    59,    39,   120,     4,    78,   123,    39,
-     125,     3,   151,     3,    59,    76,    15,    15,     9,   158,
-      14,    12,    14,     5,     6,    39,    18,    19,    16,   100,
-     101,    20,    21,    15,   149,   150,     3,    14,    30,    16,
-      39,    18,    19,    99,   159,    26,   117,    39,    40,    41,
-      14,     5,     6,    30,     4,     5,     6,    39,     4,   115,
-      14,     3,    39,    40,    41,     3,    15,   138,     3,   140,
-     126,   127,   128,   129,   130,    78,   147,     4,     5,     6,
-     151,     4,     5,     6,     4,    13,    19,   158,    13,    76,
-      27,    14,    15,    44,    -1,    18,    19,     3,    -1,    26,
-      -1,    -1,    22,    23,    24,    25,    26,    30,    -1,    -1,
-      16,    -1,    18,    19,    20,    21,    39,    40,    41,    -1,
-       3,    -1,    28,    29,    -1,    31,    32,    33,    34,    35,
-      36,    37,    38,    16,    -1,    18,    19,    20,    21,    -1,
-      -1,     3,    -1,    -1,    -1,    28,    29,    -1,    31,    32,
-      33,    34,    35,    36,    37,    38,    18,    19,    20,    21,
-      18,    19,    20,    21,    -1,    -1,    28,    29,    -1,    -1,
-      -1,    33,    34,    35,    36,    37,    38,     8,     9,    10,
-      11,    -1,    -1,    14,    -1,    16,    17,    18,    19,    14,
-      15,    -1,    -1,    18,    19,    -1,    14,    15,    -1,    30,
-      18,    19,    14,    15,    -1,    30,    18,    19,    39,    40,
-      41,    -1,    30,    -1,    39,    40,    41,    -1,    30,    -1,
-      14,    39,    40,    41,    18,    19,    -1,    39,    40,    41,
-      -1,    -1,    -1,    -1,    -1,    15,    30,    -1,    18,    19,
-      20,    21,    -1,    -1,    -1,    39,    40,    41,    28,    29,
-      -1,    -1,    -1,    33,    34,    35,    36,    37,    38,    16,
+      71,    72,    59,    39,    15,    39,   117,    78,   144,   120,
+       3,   122,    76,     3,   150,    39,    27,    14,     5,     6,
+       3,    14,    14,    39,     4,    18,    19,    14,    99,   100,
+      26,   142,   143,     4,    14,    15,    47,    30,    18,    19,
+     151,    98,    39,   114,    16,     3,    39,    40,    41,     4,
+      30,    22,    23,    24,    25,    26,    15,    10,    14,    39,
+      40,    41,   133,    16,   135,     3,   123,   124,   125,   126,
+     127,     3,     3,   144,    18,    19,    20,    21,    16,   150,
+      18,    19,    20,    21,    13,     4,     5,     6,     3,     3,
+      28,    29,    13,    31,    32,    33,    34,    35,    36,    37,
+      38,    16,    78,    18,    19,    20,    21,    26,    19,     3,
+      27,    76,    -1,    28,    29,    -1,    31,    32,    33,    34,
+      35,    36,    37,    38,    18,    19,    20,    21,     4,     5,
+       6,    44,    -1,    -1,    28,    29,    -1,    -1,    -1,    33,
+      34,    35,    36,    37,    38,     8,     9,    10,    11,    -1,
+      -1,    14,    -1,    16,    17,    18,    19,    14,    -1,    16,
+      -1,    18,    19,    -1,    14,    15,    -1,    30,    18,    19,
+      14,    -1,    -1,    30,    18,    19,    39,    40,    41,    -1,
+      30,    -1,    39,    40,    41,    -1,    30,    -1,    -1,    39,
+      40,    41,    -1,    -1,    -1,    39,    40,    41,    15,    -1,
       -1,    18,    19,    20,    21,    -1,    -1,    -1,    -1,    -1,
       -1,    28,    29,    -1,    -1,    -1,    33,    34,    35,    36,
-      37,    38,    18,    19,    20,    21,    -1,    -1,    -1,    -1,
-      -1,    -1,    28,    29,    -1,    -1,    -1,    33,    34,    35,
-      36,    37,    38,    18,    19,    20,    21,    -1,    -1,    18,
-      19,    20,    21,    28,    -1,    -1,    -1,    -1,    33,    34,
-      35,    36,    37,    38,    33,    34,    35,    36,    37,    38
+      37,    38,    16,    -1,    18,    19,    20,    21,    -1,    -1,
+      -1,    -1,    -1,    -1,    28,    29,    -1,    -1,    -1,    33,
+      34,    35,    36,    37,    38,    18,    19,    20,    21,    -1,
+      -1,    -1,    -1,    -1,    -1,    28,    29,    -1,    -1,    -1,
+      33,    34,    35,    36,    37,    38,    18,    19,    20,    21,
+      -1,    -1,    18,    19,    20,    21,    28,    -1,    -1,    -1,
+      -1,    33,    34,    35,    36,    37,    38,    33,    34,    35,
+      36,    37,    38
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -813,15 +805,14 @@ static const yytype_int8 yystos[] =
       59,    16,    45,    48,    56,    57,     3,    64,     4,    14,
       63,    18,    19,    20,    21,    28,    29,    33,    34,    35,
       36,    37,    38,    65,    49,    48,     4,    15,    46,    15,
-      64,     4,    15,    48,    49,    64,    64,    64,    64,    64,
-      64,    64,    64,    64,    64,    64,    64,    15,    59,     8,
-      10,    11,    17,    45,    49,    51,    64,    67,    68,    69,
-      70,    71,    72,    73,    15,     4,    15,     4,    15,    49,
-      64,    68,    45,    64,    68,    74,    22,    23,    24,    25,
-      26,    31,    32,     3,    15,    49,    15,    45,     3,    45,
-       3,    45,    49,    49,    49,    49,    49,     4,    15,    13,
-      64,     3,    64,    15,    45,    72,    45,    68,     3,    13,
-      68,    45,    72
+      64,     4,    15,    49,    64,    64,    64,    64,    64,    64,
+      64,    64,    64,    64,    64,    64,    15,    59,     8,    10,
+      11,    17,    45,    49,    51,    64,    67,    68,    69,    70,
+      71,    72,    73,    15,     4,    15,    49,    64,    68,    45,
+      64,    68,    74,    22,    23,    24,    25,    26,    31,    32,
+       3,    15,    45,     3,    45,     3,    45,    49,    49,    49,
+      49,    49,    13,    64,     3,    64,    45,    72,    45,    68,
+       3,    13,    68,    45,    72
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
@@ -831,12 +822,12 @@ static const yytype_int8 yyr1[] =
       48,    48,    49,    49,    50,    50,    51,    51,    52,    52,
       53,    53,    53,    54,    55,    55,    56,    56,    57,    57,
       57,    58,    58,    59,    59,    60,    60,    60,    61,    61,
-      62,    62,    63,    63,    63,    63,    63,    63,    63,    63,
-      64,    64,    64,    64,    64,    64,    64,    64,    64,    64,
-      64,    64,    64,    65,    65,    66,    66,    66,    67,    67,
-      67,    67,    67,    67,    68,    68,    68,    68,    69,    69,
-      70,    70,    70,    70,    70,    71,    71,    72,    72,    72,
-      72,    72,    72,    73,    73,    73,    74,    74,    75
+      62,    62,    63,    63,    63,    63,    64,    64,    64,    64,
+      64,    64,    64,    64,    64,    64,    64,    64,    64,    65,
+      65,    66,    66,    66,    67,    67,    67,    67,    67,    67,
+      68,    68,    68,    68,    69,    69,    70,    70,    70,    70,
+      70,    71,    71,    72,    72,    72,    72,    72,    72,    73,
+      73,    73,    74,    74,    75
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -846,12 +837,12 @@ static const yytype_int8 yyr2[] =
        1,     1,     1,     3,     1,     1,     2,     4,     0,     3,
        3,     2,     4,     4,     1,     2,     1,     1,     2,     3,
        4,     1,     3,     2,     1,     1,     1,     3,     1,     1,
-       1,     2,     2,     3,     3,     5,     3,     4,     4,     6,
-       1,     3,     3,     3,     3,     3,     3,     3,     3,     3,
-       3,     3,     3,     1,     2,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     0,     1,     1,     1,     2,     2,
-       3,     3,     3,     3,     3,     1,     2,     3,     5,     5,
-       5,     7,     7,     2,     3,     3,     5,     4,     2
+       1,     2,     2,     3,     3,     4,     1,     3,     3,     3,
+       3,     3,     3,     3,     3,     3,     3,     3,     3,     1,
+       2,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       0,     1,     1,     1,     2,     2,     3,     3,     3,     3,
+       3,     1,     2,     3,     5,     5,     5,     7,     7,     2,
+       3,     3,     5,     4,     2
 };
 
 
@@ -1550,680 +1541,652 @@ yyreduce:
 #line 114 "goBison.y"
                                                       {puts("PackageClause SEMICOLON TopLevelDeclList"); 
 (yyval.sourceFile) = new SourceFile_((yyvsp[-2].packageClause), (yyvsp[0].topLevelDeclList)); thesyntree = (yyval.sourceFile);}
-#line 1554 "bison.cpp"
+#line 1545 "bison.cpp"
     break;
 
   case 3:
 #line 118 "goBison.y"
                    {(yyval.topLevelDeclList) = new TopLevelDeclList_();}
-#line 1560 "bison.cpp"
+#line 1551 "bison.cpp"
     break;
 
   case 4:
 #line 119 "goBison.y"
                                             {puts("TopLevelDeclList TopLevelDecl SEMICOLON");
 (yyval.topLevelDeclList) = new TopLevelDeclList_((yyvsp[-2].topLevelDeclList), (yyvsp[-1].topLevelDecl));}
-#line 1567 "bison.cpp"
+#line 1558 "bison.cpp"
     break;
 
   case 5:
 #line 123 "goBison.y"
                                     {puts("LBRACE StatementList RBRACE");
 (yyval.block) = new Block_((yyvsp[-1].statementList));}
-#line 1574 "bison.cpp"
+#line 1565 "bison.cpp"
     break;
 
   case 6:
 #line 127 "goBison.y"
                 {(yyval.statementList) = new StatementList_();}
-#line 1580 "bison.cpp"
+#line 1571 "bison.cpp"
     break;
 
   case 7:
 #line 128 "goBison.y"
                                       {puts("StatementList Statement SEMICOLON");
 (yyval.statementList) = new StatementList_((yyvsp[-2].statementList), (yyvsp[-1].statement));}
-#line 1587 "bison.cpp"
+#line 1578 "bison.cpp"
     break;
 
   case 8:
 #line 132 "goBison.y"
                             {puts("IDENTIFIER");
 (yyval.identifierList) = new IdentifierList_((yyvsp[0].id));}
-#line 1594 "bison.cpp"
+#line 1585 "bison.cpp"
     break;
 
   case 9:
 #line 134 "goBison.y"
                                     {puts("COMMA IDENTIFIER");
 (yyval.identifierList) = new IdentifierList_((yyvsp[-2].identifierList), (yyvsp[0].id));}
-#line 1601 "bison.cpp"
+#line 1592 "bison.cpp"
     break;
 
   case 10:
 #line 138 "goBison.y"
            {puts("INT");
 (yyval.type) = new Type_("int");}
-#line 1608 "bison.cpp"
+#line 1599 "bison.cpp"
     break;
 
   case 11:
 #line 140 "goBison.y"
          {puts("BOOL");
 (yyval.type) = new Type_("bool");}
-#line 1615 "bison.cpp"
+#line 1606 "bison.cpp"
     break;
 
   case 12:
 #line 145 "goBison.y"
                             {puts("Expression");
 (yyval.expressionList) = new ExpressionList_((yyvsp[0].expression));}
-#line 1622 "bison.cpp"
+#line 1613 "bison.cpp"
     break;
 
   case 13:
 #line 147 "goBison.y"
                                     {puts("COMMA Expression");
 (yyval.expressionList) = new ExpressionList_((yyvsp[-2].expressionList), (yyvsp[0].expression));}
-#line 1629 "bison.cpp"
+#line 1620 "bison.cpp"
     break;
 
   case 14:
 #line 151 "goBison.y"
                        {puts("VarDecl");
 (yyval.topLevelDecl) = new TopLevelDecl_((yyvsp[0].varDecl));}
-#line 1636 "bison.cpp"
+#line 1627 "bison.cpp"
     break;
 
   case 15:
 #line 153 "goBison.y"
                  {puts("FunctionDecl");
 (yyval.topLevelDecl) = new TopLevelDecl_((yyvsp[0].functionDecl));}
-#line 1643 "bison.cpp"
+#line 1634 "bison.cpp"
     break;
 
   case 16:
 #line 159 "goBison.y"
                       {puts("VAR VarSpec");
 (yyval.varDecl) = new VarDecl_((yyvsp[0].varSpec));}
-#line 1650 "bison.cpp"
+#line 1641 "bison.cpp"
     break;
 
   case 17:
 #line 161 "goBison.y"
                                   {puts("VAR LPAREN VarSpecList RPAREN");
 (yyval.varDecl) = new VarDecl_((yyvsp[-1].varSpecList));}
-#line 1657 "bison.cpp"
+#line 1648 "bison.cpp"
     break;
 
   case 18:
 #line 165 "goBison.y"
               {(yyval.varSpecList) = new VarSpecList_();}
-#line 1663 "bison.cpp"
+#line 1654 "bison.cpp"
     break;
 
   case 19:
 #line 166 "goBison.y"
                                   {puts("VarSpecList SEMICOLON VarSpec");
 (yyval.varSpecList) = new VarSpecList_((yyvsp[-2].varSpecList), (yyvsp[-1].varSpec));}
-#line 1670 "bison.cpp"
+#line 1661 "bison.cpp"
     break;
 
   case 20:
 #line 170 "goBison.y"
                                                {puts("IdentifierList ASSIGN ExpressionList");
 (yyval.varSpec) = new VarSpec_((yyvsp[-2].identifierList), (yyvsp[0].expressionList));}
-#line 1677 "bison.cpp"
+#line 1668 "bison.cpp"
     break;
 
   case 21:
 #line 172 "goBison.y"
                         {puts("IdentifierList Type");
 (yyval.varSpec) = new VarSpec_((yyvsp[-1].identifierList), (yyvsp[0].type));}
-#line 1684 "bison.cpp"
+#line 1675 "bison.cpp"
     break;
 
   case 22:
 #line 174 "goBison.y"
                                               {puts("IdentifierList Type ASSIGN ExpressionList");
 (yyval.varSpec) = new VarSpec_((yyvsp[-3].identifierList), (yyvsp[-2].type), (yyvsp[0].expressionList));}
-#line 1691 "bison.cpp"
+#line 1682 "bison.cpp"
     break;
 
   case 23:
 #line 184 "goBison.y"
                                                {puts("FUNC FunctionName Signature FunctionBody");
 (yyval.functionDecl) = new FunctionDecl_((yyvsp[-2].id), (yyvsp[-1].signature), (yyvsp[0].block));}
-#line 1698 "bison.cpp"
+#line 1689 "bison.cpp"
     break;
 
   case 24:
 #line 188 "goBison.y"
                        {puts("Parameters");
 (yyval.signature) = new Signature_((yyvsp[0].parameters));}
-#line 1705 "bison.cpp"
+#line 1696 "bison.cpp"
     break;
 
   case 25:
 #line 190 "goBison.y"
                       {puts("Parameters Result");
 (yyval.signature) = new Signature_((yyvsp[-1].parameters), (yyvsp[0].result));}
-#line 1712 "bison.cpp"
+#line 1703 "bison.cpp"
     break;
 
   case 26:
 #line 194 "goBison.y"
                     {puts("Parameters");
 (yyval.result) = new Result_((yyvsp[0].parameters));}
-#line 1719 "bison.cpp"
+#line 1710 "bison.cpp"
     break;
 
   case 27:
 #line 196 "goBison.y"
          {puts("Type");
 (yyval.result) = new Result_((yyvsp[0].type));}
-#line 1726 "bison.cpp"
+#line 1717 "bison.cpp"
     break;
 
   case 28:
 #line 200 "goBison.y"
                            {puts("LPAREN RPAREN");
 (yyval.parameters) = new Parameters_();}
-#line 1733 "bison.cpp"
+#line 1724 "bison.cpp"
     break;
 
   case 29:
 #line 202 "goBison.y"
                                 {puts("LPAREN ParameterList RPAREN");
 (yyval.parameters) = new Parameters_((yyvsp[-1].parameterList));}
-#line 1740 "bison.cpp"
+#line 1731 "bison.cpp"
     break;
 
   case 30:
 #line 204 "goBison.y"
                                       {puts("LPAREN ParameterList COMMA RPAREN");
 (yyval.parameters) = new Parameters_((yyvsp[-2].parameterList));}
-#line 1747 "bison.cpp"
+#line 1738 "bison.cpp"
     break;
 
   case 31:
 #line 207 "goBison.y"
                               {puts("ParameterDecl");
 (yyval.parameterList) = new ParameterList_((yyvsp[0].parameterDecl));}
-#line 1754 "bison.cpp"
+#line 1745 "bison.cpp"
     break;
 
   case 32:
 #line 209 "goBison.y"
                                       {puts("ParameterList COMMA ParameterDecl");
 (yyval.parameterList) = new ParameterList_((yyvsp[-2].parameterList), (yyvsp[0].parameterDecl));}
-#line 1761 "bison.cpp"
+#line 1752 "bison.cpp"
     break;
 
   case 33:
 #line 213 "goBison.y"
                                     {puts("IdentifierList Type");
 (yyval.parameterDecl) = new ParameterDecl_((yyvsp[-1].identifierList), (yyvsp[0].type));}
-#line 1768 "bison.cpp"
+#line 1759 "bison.cpp"
     break;
 
   case 34:
 #line 215 "goBison.y"
          {puts("Type");
 (yyval.parameterDecl) = new ParameterDecl_((yyvsp[0].type));}
-#line 1775 "bison.cpp"
+#line 1766 "bison.cpp"
     break;
 
   case 35:
 #line 223 "goBison.y"
                   {puts("Literal");
 (yyval.operand) = new Operand_((yyvsp[0].literal));}
-#line 1782 "bison.cpp"
+#line 1773 "bison.cpp"
     break;
 
   case 36:
 #line 225 "goBison.y"
                {puts("OperandName");
 (yyval.operand) = new Operand_((yyvsp[0].id));}
-#line 1789 "bison.cpp"
+#line 1780 "bison.cpp"
     break;
 
   case 37:
 #line 227 "goBison.y"
                              {puts("LPAREN Expression RPAREN");
 (yyval.operand) = new Operand_((yyvsp[-1].expression));}
-#line 1796 "bison.cpp"
+#line 1787 "bison.cpp"
     break;
 
   case 38:
 #line 231 "goBison.y"
                      {puts("INTLITERAL");
 (yyval.literal) = new Literal_((yyvsp[0].id), "int");}
-#line 1803 "bison.cpp"
+#line 1794 "bison.cpp"
     break;
 
   case 39:
 #line 233 "goBison.y"
                 {puts("BOOLLITERAL");
 (yyval.literal) = new Literal_((yyvsp[0].id), "bool");}
-#line 1810 "bison.cpp"
+#line 1801 "bison.cpp"
     break;
 
   case 40:
 #line 237 "goBison.y"
                       {puts("Operand");
 (yyval.primaryExpr) = new PrimaryExpr_((yyvsp[0].operand));}
-#line 1817 "bison.cpp"
+#line 1808 "bison.cpp"
     break;
 
   case 41:
 #line 239 "goBison.y"
                           {puts("PrimaryExpr Arguments"); //Function call
 (yyval.primaryExpr) = new PrimaryExpr_((yyvsp[-1].primaryExpr), (yyvsp[0].arguments));}
-#line 1824 "bison.cpp"
+#line 1815 "bison.cpp"
     break;
 
   case 42:
 #line 243 "goBison.y"
                           {puts("LPAREN RPAREN");
 (yyval.arguments) = new Arguments_();}
-#line 1831 "bison.cpp"
+#line 1822 "bison.cpp"
     break;
 
   case 43:
 #line 245 "goBison.y"
                                  {puts("LPAREN ExpressionList RPAREN");
 (yyval.arguments) = new Arguments_((yyvsp[-1].expressionList));}
-#line 1838 "bison.cpp"
+#line 1829 "bison.cpp"
     break;
 
   case 44:
 #line 247 "goBison.y"
-                       {puts("LPAREN Type RPAREN");
-(yyval.arguments) = new Arguments_((yyvsp[-1].type));}
-#line 1845 "bison.cpp"
+                        {puts("LPAREN COMMA RPAREN");
+(yyval.arguments) = new Arguments_();}
+#line 1836 "bison.cpp"
     break;
 
   case 45:
 #line 249 "goBison.y"
-                                            {puts("LPAREN Type COMMA ExpressionList RPAREN");
-(yyval.arguments) = new Arguments_((yyvsp[-3].type), (yyvsp[-1].expressionList));}
-#line 1852 "bison.cpp"
+                                       {puts("LPAREN ExpressionList COMMA RPAREN");
+(yyval.arguments) = new Arguments_((yyvsp[-2].expressionList));}
+#line 1843 "bison.cpp"
     break;
 
   case 46:
-#line 251 "goBison.y"
-                        {puts("LPAREN COMMA RPAREN");
-(yyval.arguments) = new Arguments_();}
-#line 1859 "bison.cpp"
+#line 253 "goBison.y"
+                       {puts("UnaryExpr");
+(yyval.expression) = new Expression_((yyvsp[0].unaryExpr));}
+#line 1850 "bison.cpp"
     break;
 
   case 47:
-#line 253 "goBison.y"
-                                       {puts("LPAREN ExpressionList COMMA RPAREN");
-(yyval.arguments) = new Arguments_((yyvsp[-2].expressionList));}
-#line 1866 "bison.cpp"
+#line 255 "goBison.y"
+                             {puts("Expression OR Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "or", (yyvsp[0].expression));}
+#line 1857 "bison.cpp"
     break;
 
   case 48:
-#line 255 "goBison.y"
-                             {puts("LPAREN Type COMMA RPAREN");
-(yyval.arguments) = new Arguments_((yyvsp[-2].type));}
-#line 1873 "bison.cpp"
+#line 257 "goBison.y"
+                              {puts("Expression AND Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "and", (yyvsp[0].expression));}
+#line 1864 "bison.cpp"
     break;
 
   case 49:
-#line 257 "goBison.y"
-                                                  {puts("LPAREN Type COMMA ExpressionList COMMA RPAREN");
-(yyval.arguments) = new Arguments_((yyvsp[-4].type), (yyvsp[-2].expressionList));}
-#line 1880 "bison.cpp"
+#line 259 "goBison.y"
+                               {puts("Expression PLUS Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "plus", (yyvsp[0].expression));}
+#line 1871 "bison.cpp"
     break;
 
   case 50:
 #line 261 "goBison.y"
-                       {puts("UnaryExpr");
-(yyval.expression) = new Expression_((yyvsp[0].unaryExpr));}
-#line 1887 "bison.cpp"
+                              {puts("Expression MIN Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "min", (yyvsp[0].expression));}
+#line 1878 "bison.cpp"
     break;
 
   case 51:
 #line 263 "goBison.y"
-                             {puts("Expression OR Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "or", (yyvsp[0].expression));}
-#line 1894 "bison.cpp"
+                              {puts("Expression MUL Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "mul", (yyvsp[0].expression));}
+#line 1885 "bison.cpp"
     break;
 
   case 52:
 #line 265 "goBison.y"
-                              {puts("Expression AND Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "and", (yyvsp[0].expression));}
-#line 1901 "bison.cpp"
+                              {puts("Expression DIV Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "div", (yyvsp[0].expression));}
+#line 1892 "bison.cpp"
     break;
 
   case 53:
 #line 267 "goBison.y"
-                               {puts("Expression PLUS Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "plus", (yyvsp[0].expression));}
-#line 1908 "bison.cpp"
+                             {puts("Expression GT Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "gt", (yyvsp[0].expression));}
+#line 1899 "bison.cpp"
     break;
 
   case 54:
 #line 269 "goBison.y"
-                              {puts("Expression MIN Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "min", (yyvsp[0].expression));}
-#line 1915 "bison.cpp"
+                             {puts("Expression GE Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "ge", (yyvsp[0].expression));}
+#line 1906 "bison.cpp"
     break;
 
   case 55:
 #line 271 "goBison.y"
-                              {puts("Expression MUL Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "mul", (yyvsp[0].expression));}
-#line 1922 "bison.cpp"
+                             {puts("Expression LT Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "lt", (yyvsp[0].expression));}
+#line 1913 "bison.cpp"
     break;
 
   case 56:
 #line 273 "goBison.y"
-                              {puts("Expression DIV Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "div", (yyvsp[0].expression));}
-#line 1929 "bison.cpp"
+                             {puts("Expression LE Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "le", (yyvsp[0].expression));}
+#line 1920 "bison.cpp"
     break;
 
   case 57:
 #line 275 "goBison.y"
-                             {puts("Expression GT Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "gt", (yyvsp[0].expression));}
-#line 1936 "bison.cpp"
+                             {puts("Expression EQ Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "eq", (yyvsp[0].expression));}
+#line 1927 "bison.cpp"
     break;
 
   case 58:
 #line 277 "goBison.y"
-                             {puts("Expression GE Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "ge", (yyvsp[0].expression));}
-#line 1943 "bison.cpp"
+                             {puts("Expression NE Expression");
+(yyval.expression) = new Expression_((yyvsp[-2].expression), "ne", (yyvsp[0].expression));}
+#line 1934 "bison.cpp"
     break;
 
   case 59:
-#line 279 "goBison.y"
-                             {puts("Expression LT Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "lt", (yyvsp[0].expression));}
-#line 1950 "bison.cpp"
+#line 281 "goBison.y"
+                        {puts("PrimaryExpr");
+(yyval.unaryExpr) = new UnaryExpr_((yyvsp[0].primaryExpr));}
+#line 1941 "bison.cpp"
     break;
 
   case 60:
-#line 281 "goBison.y"
-                             {puts("Expression LE Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "le", (yyvsp[0].expression));}
-#line 1957 "bison.cpp"
+#line 283 "goBison.y"
+                       {puts("Unary_op UnaryExpr");
+(yyval.unaryExpr) = new UnaryExpr_((yyvsp[-1].unary_op), (yyvsp[0].unaryExpr));}
+#line 1948 "bison.cpp"
     break;
 
   case 61:
-#line 283 "goBison.y"
-                             {puts("Expression EQ Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "eq", (yyvsp[0].expression));}
-#line 1964 "bison.cpp"
+#line 287 "goBison.y"
+                             {puts("PLUS");
+(yyval.unary_op) = new Unary_op_("plus");}
+#line 1955 "bison.cpp"
     break;
 
   case 62:
-#line 285 "goBison.y"
-                             {puts("Expression NE Expression");
-(yyval.expression) = new Expression_((yyvsp[-2].expression), "ne", (yyvsp[0].expression));}
-#line 1971 "bison.cpp"
+#line 289 "goBison.y"
+                     {puts("MIN");
+(yyval.unary_op) = new Unary_op_("min");}
+#line 1962 "bison.cpp"
     break;
 
   case 63:
-#line 289 "goBison.y"
-                        {puts("PrimaryExpr");
-(yyval.unaryExpr) = new UnaryExpr_((yyvsp[0].primaryExpr));}
-#line 1978 "bison.cpp"
+#line 291 "goBison.y"
+                     {puts("NOT");
+(yyval.unary_op) = new Unary_op_("not");}
+#line 1969 "bison.cpp"
     break;
 
   case 64:
-#line 291 "goBison.y"
-                       {puts("Unary_op UnaryExpr");
-(yyval.unaryExpr) = new UnaryExpr_((yyvsp[-1].unary_op), (yyvsp[0].unaryExpr));}
-#line 1985 "bison.cpp"
+#line 298 "goBison.y"
+                    {puts("VarDecl");
+(yyval.statement) = new Statement_((yyvsp[0].varDecl));}
+#line 1976 "bison.cpp"
     break;
 
   case 65:
-#line 295 "goBison.y"
-                             {puts("PLUS");
-(yyval.unary_op) = new Unary_op_("plus");}
-#line 1992 "bison.cpp"
+#line 300 "goBison.y"
+               {puts("SimpleStmt");
+(yyval.statement) = new Statement_((yyvsp[0].simpleStmt));}
+#line 1983 "bison.cpp"
     break;
 
   case 66:
-#line 297 "goBison.y"
-                     {puts("MIN");
-(yyval.unary_op) = new Unary_op_("min");}
-#line 1999 "bison.cpp"
+#line 302 "goBison.y"
+               {puts("ReturnStmt");
+(yyval.statement) = new Statement_((yyvsp[0].returnStmt));}
+#line 1990 "bison.cpp"
     break;
 
   case 67:
-#line 299 "goBison.y"
-                     {puts("NOT");
-(yyval.unary_op) = new Unary_op_("not");}
-#line 2006 "bison.cpp"
+#line 304 "goBison.y"
+          {puts("Block");
+(yyval.statement) = new Statement_((yyvsp[0].block));}
+#line 1997 "bison.cpp"
     break;
 
   case 68:
 #line 306 "goBison.y"
-                    {puts("VarDecl");
-(yyval.statement) = new Statement_((yyvsp[0].varDecl));}
-#line 2013 "bison.cpp"
+           {puts("IfStmt");
+(yyval.statement) = new Statement_((yyvsp[0].ifStmt));}
+#line 2004 "bison.cpp"
     break;
 
   case 69:
 #line 308 "goBison.y"
-               {puts("SimpleStmt");
-(yyval.statement) = new Statement_((yyvsp[0].simpleStmt));}
-#line 2020 "bison.cpp"
+            {puts("ForStmt");
+(yyval.statement) = new Statement_((yyvsp[0].forStmt));}
+#line 2011 "bison.cpp"
     break;
 
   case 70:
-#line 310 "goBison.y"
-               {puts("ReturnStmt");
-(yyval.statement) = new Statement_((yyvsp[0].returnStmt));}
-#line 2027 "bison.cpp"
+#line 312 "goBison.y"
+              {puts("EmptyStmt");
+(yyval.simpleStmt) = new SimpleStmt_();}
+#line 2018 "bison.cpp"
     break;
 
   case 71:
-#line 312 "goBison.y"
-          {puts("Block");
-(yyval.statement) = new Statement_((yyvsp[0].block));}
-#line 2034 "bison.cpp"
+#line 314 "goBison.y"
+               {puts("ExpressionStmt");
+(yyval.simpleStmt) = new SimpleStmt_((yyvsp[0].expression));}
+#line 2025 "bison.cpp"
     break;
 
   case 72:
-#line 314 "goBison.y"
-           {puts("IfStmt");
-(yyval.statement) = new Statement_((yyvsp[0].ifStmt));}
-#line 2041 "bison.cpp"
+#line 316 "goBison.y"
+               {puts("IncDecStmt");
+(yyval.simpleStmt) = new SimpleStmt_((yyvsp[0].incDecStmt));}
+#line 2032 "bison.cpp"
     break;
 
   case 73:
-#line 316 "goBison.y"
-            {puts("ForStmt");
-(yyval.statement) = new Statement_((yyvsp[0].forStmt));}
-#line 2048 "bison.cpp"
+#line 318 "goBison.y"
+               {puts("Assignment");
+(yyval.simpleStmt) = new SimpleStmt_((yyvsp[0].assignment));}
+#line 2039 "bison.cpp"
     break;
 
   case 74:
-#line 320 "goBison.y"
-              {puts("EmptyStmt");
-(yyval.simpleStmt) = new SimpleStmt_();}
-#line 2055 "bison.cpp"
+#line 322 "goBison.y"
+                            {puts("Expression INC");
+(yyval.incDecStmt) = new IncDecStmt_((yyvsp[-1].expression), "inc");}
+#line 2046 "bison.cpp"
     break;
 
   case 75:
-#line 322 "goBison.y"
-               {puts("ExpressionStmt");
-(yyval.simpleStmt) = new SimpleStmt_((yyvsp[0].expression));}
-#line 2062 "bison.cpp"
+#line 324 "goBison.y"
+                   {puts("Expression DEC");
+(yyval.incDecStmt) = new IncDecStmt_((yyvsp[-1].expression), "dec");}
+#line 2053 "bison.cpp"
     break;
 
   case 76:
-#line 324 "goBison.y"
-               {puts("IncDecStmt");
-(yyval.simpleStmt) = new SimpleStmt_((yyvsp[0].incDecStmt));}
-#line 2069 "bison.cpp"
+#line 328 "goBison.y"
+                                                      {puts("ExpressionList PLUSASSIGN ExpressionList");
+(yyval.assignment) = new Assignment_((yyvsp[-2].expressionList), "plusassign", (yyvsp[0].expressionList));}
+#line 2060 "bison.cpp"
     break;
 
   case 77:
-#line 326 "goBison.y"
-               {puts("Assignment");
-(yyval.simpleStmt) = new SimpleStmt_((yyvsp[0].assignment));}
-#line 2076 "bison.cpp"
+#line 330 "goBison.y"
+                                            {puts("ExpressionList MINASSIGN ExpressionList");
+(yyval.assignment) = new Assignment_((yyvsp[-2].expressionList), "minassign", (yyvsp[0].expressionList));}
+#line 2067 "bison.cpp"
     break;
 
   case 78:
-#line 330 "goBison.y"
-                            {puts("Expression INC");
-(yyval.incDecStmt) = new IncDecStmt_((yyvsp[-1].expression), "inc");}
-#line 2083 "bison.cpp"
+#line 332 "goBison.y"
+                                            {puts("ExpressionList MULASSIGN ExpressionList");
+(yyval.assignment) = new Assignment_((yyvsp[-2].expressionList), "mulassign", (yyvsp[0].expressionList));}
+#line 2074 "bison.cpp"
     break;
 
   case 79:
-#line 332 "goBison.y"
-                   {puts("Expression DEC");
-(yyval.incDecStmt) = new IncDecStmt_((yyvsp[-1].expression), "dec");}
-#line 2090 "bison.cpp"
+#line 334 "goBison.y"
+                                            {puts("ExpressionList DIVASSIGN ExpressionList");
+(yyval.assignment) = new Assignment_((yyvsp[-2].expressionList), "divassign", (yyvsp[0].expressionList));}
+#line 2081 "bison.cpp"
     break;
 
   case 80:
 #line 336 "goBison.y"
-                                                      {puts("ExpressionList PLUSASSIGN ExpressionList");
-(yyval.assignment) = new Assignment_((yyvsp[-2].expressionList), "plusassign", (yyvsp[0].expressionList));}
-#line 2097 "bison.cpp"
+                                         {puts("ExpressionList ASSIGN ExpressionList");
+(yyval.assignment) = new Assignment_((yyvsp[-2].expressionList), "assign", (yyvsp[0].expressionList));}
+#line 2088 "bison.cpp"
     break;
 
   case 81:
-#line 338 "goBison.y"
-                                            {puts("ExpressionList MINASSIGN ExpressionList");
-(yyval.assignment) = new Assignment_((yyvsp[-2].expressionList), "minassign", (yyvsp[0].expressionList));}
-#line 2104 "bison.cpp"
+#line 340 "goBison.y"
+                    {puts("RETURN");
+(yyval.returnStmt) = new ReturnStmt_();}
+#line 2095 "bison.cpp"
     break;
 
   case 82:
-#line 340 "goBison.y"
-                                            {puts("ExpressionList MULASSIGN ExpressionList");
-(yyval.assignment) = new Assignment_((yyvsp[-2].expressionList), "mulassign", (yyvsp[0].expressionList));}
-#line 2111 "bison.cpp"
+#line 342 "goBison.y"
+                          {puts("RETURN ExpressionList");
+(yyval.returnStmt) = new ReturnStmt_((yyvsp[0].expressionList));}
+#line 2102 "bison.cpp"
     break;
 
   case 83:
-#line 342 "goBison.y"
-                                            {puts("ExpressionList DIVASSIGN ExpressionList");
-(yyval.assignment) = new Assignment_((yyvsp[-2].expressionList), "divassign", (yyvsp[0].expressionList));}
-#line 2118 "bison.cpp"
+#line 346 "goBison.y"
+                             {puts("IF Expression Block");
+(yyval.ifStmt) = new IfStmt_((yyvsp[-1].expression), (yyvsp[0].block));}
+#line 2109 "bison.cpp"
     break;
 
   case 84:
-#line 344 "goBison.y"
-                                         {puts("ExpressionList ASSIGN ExpressionList");
-(yyval.assignment) = new Assignment_((yyvsp[-2].expressionList), "assign", (yyvsp[0].expressionList));}
-#line 2125 "bison.cpp"
+#line 348 "goBison.y"
+                                    {puts("IF Expression Block ELSE IfStmt");
+(yyval.ifStmt) = new IfStmt_((yyvsp[-3].expression), (yyvsp[-2].block), (yyvsp[0].ifStmt));}
+#line 2116 "bison.cpp"
     break;
 
   case 85:
-#line 348 "goBison.y"
-                    {puts("RETURN");
-(yyval.returnStmt) = new ReturnStmt_();}
-#line 2132 "bison.cpp"
+#line 350 "goBison.y"
+                                   {puts("IF Expression Block ELSE Block");
+(yyval.ifStmt) = new IfStmt_((yyvsp[-3].expression), (yyvsp[-2].block), (yyvsp[0].block));}
+#line 2123 "bison.cpp"
     break;
 
   case 86:
-#line 350 "goBison.y"
-                          {puts("RETURN ExpressionList");
-(yyval.returnStmt) = new ReturnStmt_((yyvsp[0].expressionList));}
-#line 2139 "bison.cpp"
+#line 352 "goBison.y"
+                                             {puts("IF SimpleStmt SEMICOLON Expression Block");
+(yyval.ifStmt) = new IfStmt_((yyvsp[-3].simpleStmt), (yyvsp[-1].expression), (yyvsp[0].block));}
+#line 2130 "bison.cpp"
     break;
 
   case 87:
 #line 354 "goBison.y"
-                             {puts("IF Expression Block");
-(yyval.ifStmt) = new IfStmt_((yyvsp[-1].expression), (yyvsp[0].block));}
-#line 2146 "bison.cpp"
+                                                         {puts("IF SimpleStmt SEMICOLON Expression Block ELSE IfStmt");
+(yyval.ifStmt) = new IfStmt_((yyvsp[-5].simpleStmt), (yyvsp[-3].expression), (yyvsp[-2].block), (yyvsp[0].ifStmt));}
+#line 2137 "bison.cpp"
     break;
 
   case 88:
 #line 356 "goBison.y"
-                                    {puts("IF Expression Block ELSE IfStmt");
-(yyval.ifStmt) = new IfStmt_((yyvsp[-3].expression), (yyvsp[-2].block), (yyvsp[0].ifStmt));}
-#line 2153 "bison.cpp"
+                                                        {puts("IF SimpleStmt SEMICOLON Expression Block ELSE Block");
+(yyval.ifStmt) = new IfStmt_((yyvsp[-5].simpleStmt), (yyvsp[-3].expression), (yyvsp[-2].block), (yyvsp[0].block));}
+#line 2144 "bison.cpp"
     break;
 
   case 89:
-#line 358 "goBison.y"
-                                   {puts("IF Expression Block ELSE Block");
-(yyval.ifStmt) = new IfStmt_((yyvsp[-3].expression), (yyvsp[-2].block), (yyvsp[0].block));}
-#line 2160 "bison.cpp"
+#line 360 "goBison.y"
+                    {puts("FOR Block");
+(yyval.forStmt) = new ForStmt_((yyvsp[0].block));}
+#line 2151 "bison.cpp"
     break;
 
   case 90:
-#line 360 "goBison.y"
-                                             {puts("IF SimpleStmt SEMICOLON Expression Block");
-(yyval.ifStmt) = new IfStmt_((yyvsp[-3].simpleStmt), (yyvsp[-1].expression), (yyvsp[0].block));}
-#line 2167 "bison.cpp"
+#line 362 "goBison.y"
+                         {puts("FOR Condition Block");
+(yyval.forStmt) = new ForStmt_((yyvsp[-1].expression), (yyvsp[0].block));}
+#line 2158 "bison.cpp"
     break;
 
   case 91:
-#line 362 "goBison.y"
-                                                         {puts("IF SimpleStmt SEMICOLON Expression Block ELSE IfStmt");
-(yyval.ifStmt) = new IfStmt_((yyvsp[-5].simpleStmt), (yyvsp[-3].expression), (yyvsp[-2].block), (yyvsp[0].ifStmt));}
-#line 2174 "bison.cpp"
+#line 364 "goBison.y"
+                        {puts("FOR ForClause Block");
+(yyval.forStmt) = new ForStmt_((yyvsp[-1].forClause), (yyvsp[0].block));}
+#line 2165 "bison.cpp"
     break;
 
   case 92:
-#line 364 "goBison.y"
-                                                        {puts("IF SimpleStmt SEMICOLON Expression Block ELSE Block");
-(yyval.ifStmt) = new IfStmt_((yyvsp[-5].simpleStmt), (yyvsp[-3].expression), (yyvsp[-2].block), (yyvsp[0].block));}
-#line 2181 "bison.cpp"
+#line 368 "goBison.y"
+                                                                 {puts("InitStmt SEMICOLON Condition SEMICOLON PostStmt");
+(yyval.forClause) = new ForClause_((yyvsp[-4].simpleStmt), (yyvsp[-2].expression), (yyvsp[0].simpleStmt));}
+#line 2172 "bison.cpp"
     break;
 
   case 93:
-#line 368 "goBison.y"
-                    {puts("FOR Block");
-(yyval.forStmt) = new ForStmt_((yyvsp[0].block));}
-#line 2188 "bison.cpp"
+#line 370 "goBison.y"
+                                              {puts("InitStmt SEMICOLON SEMICOLON PostStmt");
+(yyval.forClause) = new ForClause_((yyvsp[-3].simpleStmt), (yyvsp[0].simpleStmt));}
+#line 2179 "bison.cpp"
     break;
 
   case 94:
-#line 370 "goBison.y"
-                         {puts("FOR Condition Block");
-(yyval.forStmt) = new ForStmt_((yyvsp[-1].expression), (yyvsp[0].block));}
-#line 2195 "bison.cpp"
-    break;
-
-  case 95:
-#line 372 "goBison.y"
-                        {puts("FOR ForClause Block");
-(yyval.forStmt) = new ForStmt_((yyvsp[-1].forClause), (yyvsp[0].block));}
-#line 2202 "bison.cpp"
-    break;
-
-  case 96:
-#line 376 "goBison.y"
-                                                                 {puts("InitStmt SEMICOLON Condition SEMICOLON PostStmt");
-(yyval.forClause) = new ForClause_((yyvsp[-4].simpleStmt), (yyvsp[-2].expression), (yyvsp[0].simpleStmt));}
-#line 2209 "bison.cpp"
-    break;
-
-  case 97:
 #line 378 "goBison.y"
-                                              {puts("InitStmt SEMICOLON SEMICOLON PostStmt");
-(yyval.forClause) = new ForClause_((yyvsp[-3].simpleStmt), (yyvsp[0].simpleStmt));}
-#line 2216 "bison.cpp"
-    break;
-
-  case 98:
-#line 386 "goBison.y"
                                    {puts("PACKAGE IDENTIFIER");
 (yyval.packageClause) = new PackageClause_((yyvsp[0].id));}
-#line 2223 "bison.cpp"
+#line 2186 "bison.cpp"
     break;
 
 
-#line 2227 "bison.cpp"
+#line 2190 "bison.cpp"
 
       default: break;
     }
@@ -2455,7 +2418,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 390 "goBison.y"
+#line 382 "goBison.y"
 
 
 void yyerror (const char *s)

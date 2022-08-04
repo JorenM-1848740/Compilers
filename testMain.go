@@ -3,8 +3,7 @@ package main
 var (t3, t4 int = 3, 5; t5 int = 6;);
 var (a int; b bool;)
 var c bool = true || false;
-var u, x = 3, true;
-var y = u;
+var k, k1 int = testing(6, 7);
 
 func main(a int) (b int){
     var n int;
@@ -15,7 +14,7 @@ func main(a int) (b int){
     var nextTerm = 0
 	var i = 0
     
-    for i=1;i<=n;i++ {
+    for  {
         if i==1{
 
         }
@@ -24,12 +23,20 @@ func main(a int) (b int){
         }
         nextTerm = t1 && t2
         t1=t2
+        return 5;
         t2=nextTerm
     }
+
+        var ljl int;
+
+        {
+            return 5;
+
+        }
 
     
 }
 
-func testing() (a bool, b int, c int){
+func testing(d int, e int) (a bool, b bool){
     return 5;
 }

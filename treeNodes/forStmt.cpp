@@ -24,5 +24,14 @@ void ForStmt_::print(int d){
 }
 
 bool ForStmt_::terminates(){
-    return block->terminates();
+    //Based on go specs related to terminating statements
+    if (expression == nullptr){
+        if (forClause == nullptr){
+            return true;
+        }
+        if (!forClause->hasCondition()){
+            return true;
+        }
+    }
+    return false;
 }

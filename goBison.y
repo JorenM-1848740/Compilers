@@ -244,18 +244,10 @@ Arguments : LPAREN RPAREN {puts("LPAREN RPAREN");
 $$ = new Arguments_();}
   | LPAREN ExpressionList RPAREN {puts("LPAREN ExpressionList RPAREN");
 $$ = new Arguments_($2);}
-  | LPAREN Type RPAREN {puts("LPAREN Type RPAREN");
-$$ = new Arguments_($2);}
-  | LPAREN Type COMMA ExpressionList RPAREN {puts("LPAREN Type COMMA ExpressionList RPAREN");
-$$ = new Arguments_($2, $4);}
   | LPAREN COMMA RPAREN {puts("LPAREN COMMA RPAREN");
 $$ = new Arguments_();}
   | LPAREN ExpressionList COMMA RPAREN {puts("LPAREN ExpressionList COMMA RPAREN");
 $$ = new Arguments_($2);}
-  | LPAREN Type COMMA RPAREN {puts("LPAREN Type COMMA RPAREN");
-$$ = new Arguments_($2);}
-  | LPAREN Type COMMA ExpressionList COMMA RPAREN {puts("LPAREN Type COMMA ExpressionList COMMA RPAREN");
-$$ = new Arguments_($2, $4);}
   ;
 
 Expression : UnaryExpr {puts("UnaryExpr");

@@ -20,18 +20,26 @@ void UnaryExpr_::print(int d){
 
 }
 
-string UnaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& typeErrors){
+vector<string> UnaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& typeErrors){
     //If there is a unary operator
     if (unary_op != nullptr){
-        string type = unaryExpr->getType(scopeStack, typeErrors);
+        vector<string> type = unaryExpr->getType(scopeStack, typeErrors);
         string operatorName = unary_op->getOperatorName();
-        if ((operatorName == "plus" || operatorName == "min") && type != "int"){
-            typeErrors.push_back("Unary operator not specified for this type!");
+        //If single valued expression
+        if (type.size() == 1){
+            if ((operatorName == "plus" || operatorName == "min") && type[0] != "int"){
+                typeErrors.push_back("Unary operator not specified for this type!");
+            }
+            else if (operatorName == "not" && type[0] != "bool"){
+                typeErrors.push_back("Unary operator not specified for this type!");
+            }
+            return type;
         }
-        else if (operatorName == "not" && type != "bool"){
-            typeErrors.push_back("Unary operator not specified for this type!");
+        else{
+            typeErrors.push_back("Unary operators not defined for this expression!");
+            return type;
         }
-        return type;
+        
     }
     //If there is no unary operator
     else{

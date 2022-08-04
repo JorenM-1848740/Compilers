@@ -19,3 +19,10 @@ void ForClause_::print(int d){
     simpleStmt2->print(d+1);
 
 }
+
+bool ForClause_::hasCondition(){
+    if (expression == nullptr){
+        return false;
+    }
+    return true;
+}

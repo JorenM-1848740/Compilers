@@ -6,13 +6,6 @@ Arguments_::Arguments_(){
 Arguments_::Arguments_(ExpressionList el){
     expressionList = el;
 }
-Arguments_::Arguments_(Type t){
-    type = t;
-}
-Arguments_::Arguments_(Type t, ExpressionList el){
-    type = t;
-    expressionList = el;
-}
 
 void Arguments_::print(int d){
     std::cout << std::string(d*printWidth, ' ') << "Arguments" << "\n";
@@ -21,5 +14,16 @@ void Arguments_::print(int d){
     }
     if (expressionList != nullptr){
         expressionList->print(d+1);
+    }
+}
+
+vector<vector<string>> Arguments_::getArgumentTypes(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    vector<vector<string>> types;
+    if (expressionList == nullptr){
+        return types;
+    }
+    else{
+        expressionList->getTypes(scopeStack, typeErrors, types);
+        return types;
     }
 }
