@@ -178,6 +178,8 @@ struct ExpressionList_{
     void getTypes(vector<Scope>& scopeStack, vector<string>& typeErrors, vector<vector<string>>& types);
 
     void print(int d);
+
+    void getIds(vector<string>& ids);
 };
 
 struct IdentifierList_{
@@ -307,6 +309,7 @@ struct StatementList_{
     void print(int d);
 
     bool terminates();
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct Statement_{
@@ -328,6 +331,7 @@ struct Statement_{
     void print(int d);
 
     bool terminates();
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct SimpleStmt_{
@@ -341,6 +345,8 @@ struct SimpleStmt_{
     SimpleStmt_(Assignment a);
 
     void print(int d);
+
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct ReturnStmt_{
@@ -350,6 +356,8 @@ struct ReturnStmt_{
     ReturnStmt_(ExpressionList el);
 
     void print(int d);
+
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct IfStmt_{
@@ -370,6 +378,8 @@ struct IfStmt_{
 
     bool terminates();
 
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+
 
 };
 
@@ -385,6 +395,8 @@ struct ForStmt_{
     void print(int d);
 
     bool terminates();
+
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct IncDecStmt_{
@@ -394,6 +406,8 @@ struct IncDecStmt_{
     IncDecStmt_(Expression e, const char* id);
 
     void print(int d);
+
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct Assignment_{
@@ -404,6 +418,8 @@ struct Assignment_{
     Assignment_(ExpressionList el1, const char* ao, ExpressionList el2);
 
     void print(int d);
+
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct ForClause_{
@@ -431,6 +447,8 @@ struct Expression_{
     vector<string> getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
 
     void print(int d);
+
+    string getId();
 };
 
 struct Operand_{
@@ -497,6 +515,8 @@ struct UnaryExpr_{
     vector<string> getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
 
     void print(int d);
+
+    string getId();
 };
 
 struct Unary_op_{

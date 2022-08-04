@@ -61,3 +61,12 @@ vector<string> Expression_::getType(vector<Scope>& scopeStack, vector<string>& t
         }        
     }
 }
+
+string Expression_::getId(){
+    if (unaryExpr != nullptr){
+        return unaryExpr->getId();
+    }
+    else{
+        return "";
+    }
+}

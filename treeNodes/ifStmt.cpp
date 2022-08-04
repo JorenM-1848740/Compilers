@@ -66,3 +66,7 @@ bool IfStmt_::terminates(){
         return false;
     }
 }
+
+void IfStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    
+}

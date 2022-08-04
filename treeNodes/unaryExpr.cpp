@@ -46,3 +46,12 @@ vector<string> UnaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& ty
         return primaryExpr->getType(scopeStack, typeErrors);
     }
 }
+
+string UnaryExpr_::getId(){
+    if (primaryExpr != nullptr){
+        return primaryExpr->getId();
+    }
+    else{
+        return "";
+    }
+}

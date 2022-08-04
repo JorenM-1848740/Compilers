@@ -28,3 +28,11 @@ bool StatementList_::terminates(){
         return (statement->terminates());
     }
 }
+
+void StatementList_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If there are statements to typecheck
+    if (statementList != nullptr){
+        statementList->typeCheck(scopeStack, typeErrors);
+        statement->typeCheck(scopeStack, typeErrors);
+    }
+}

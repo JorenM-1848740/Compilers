@@ -14,3 +14,7 @@ void ReturnStmt_::print(int d){
     }
 
 }
+
+void ReturnStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    
+}

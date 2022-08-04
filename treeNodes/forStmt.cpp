@@ -35,3 +35,7 @@ bool ForStmt_::terminates(){
     }
     return false;
 }
+
+void ForStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    
+}

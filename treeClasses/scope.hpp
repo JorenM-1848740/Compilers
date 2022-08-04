@@ -12,6 +12,7 @@ struct Scope_ {
 
     map<string, std::pair<string, string>> variableMap;
     map<string, Signature> functionMap;
+    string currentFunctionTypeChecking = "";
 
     std::pair<string, string> getVariableValue(string identifier);
 
@@ -20,6 +21,14 @@ struct Scope_ {
     Signature getFunctionSignature(string identifier);
 
     void addFunctionSignature(string identifier, Signature signature);
+
+    string getCurrentFunctionTypeChecking(){
+        return currentFunctionTypeChecking;
+    }
+
+    void setCurrentFunctionTypeChecking(string s){
+        currentFunctionTypeChecking = s;
+    }
 
     Scope_();
 

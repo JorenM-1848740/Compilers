@@ -50,14 +50,14 @@ vector<string> PrimaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& 
                     //Check if arguments are same size as parameters
                     if (types.size() != signatureParameters.size()){
                         typeErrors.push_back("Argument list different size as parameter list!");
-                        return {};
+                        return {"undefined"};
                     }
                     else{
                         //Check if types correspond
                         for (int i = 0; i < types.size();++i){
                             if (types[i][0] != signatureParameters[i].second){
                                 typeErrors.push_back("Argument types don't correspond with parameter types");
-                                return {};
+                                return {"undefined"};
                             }
                         }
 
@@ -73,20 +73,20 @@ vector<string> PrimaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& 
                 }
                 catch (exception e){
                     typeErrors.push_back("Function call references non existent function!");
-                    return {};
+                    return {"undefined"};
                 }
                 
             }
             else{
                 //TODO: Not only identifier as function name? Pointers?
                 typeErrors.push_back("TODO: not only identifier as function name (pointers)!");
-                return {};
+                return {"undefined"};
             }
         }
         else{
             //TODO: Function call inside of function call
             typeErrors.push_back("Multi valued expressions not allowed in function call!");
-            return {};
+            return {"undefined"};
         }
 
     }

@@ -56,12 +56,17 @@ vector<string> Operand_::getType(vector<Scope>& scopeStack, vector<string>& type
         }
         else{
             typeErrors.push_back("Variable is not declared!");
-            return {};
+            return {"undefined"};
         }
 
     }
 }
 
 string Operand_::getId(){
-    return id;
+    if (expression != nullptr){
+        return expression->getId();
+    }
+    else{
+        return id;
+    }
 }

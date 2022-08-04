@@ -10,7 +10,7 @@ Block_::Block_(StatementList sl){
 }
 
 void Block_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
-    return;
+    statementList->typeCheck(scopeStack, typeErrors);
 }
 
 bool Block_::terminates(){

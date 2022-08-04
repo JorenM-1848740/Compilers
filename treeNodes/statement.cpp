@@ -1,4 +1,5 @@
 #include "../absyn.hpp"
+#include "../treeClasses/scope.hpp"
 
 Statement_::Statement_(VarDecl vd){
     varDecl = vd;
@@ -61,5 +62,32 @@ bool Statement_::terminates(){
     //For statement case
     else{
         return forStmt->terminates();
+    }
+}
+
+void Statement_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    if (varDecl != nullptr){
+        varDecl->typeCheck(scopeStack, typeErrors);
+    }
+    else if (simpleStmt != nullptr){
+        simpleStmt->typeCheck(scopeStack, typeErrors);
+    }
+    else if (returnStmt != nullptr){
+        //TODO
+        returnStmt->typeCheck(scopeStack, typeErrors);
+    }
+    else if (block != nullptr){
+        scopeStack.push_back(new Scope_());
+        block->typeCheck(scopeStack, typeErrors);
+        scopeStack.pop_back();
+    }
+    else if (ifStmt != nullptr){
+        //TODO
+        ifStmt->typeCheck(scopeStack, typeErrors);
+    }
+    //For statement case
+    else{
+        //TODO
+        forStmt->typeCheck(scopeStack, typeErrors);
     }
 }

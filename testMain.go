@@ -3,16 +3,20 @@ package main
 var (t3, t4 int = 3, 5; t5 int = 6;);
 var (a int; b bool;)
 var c bool = true || false;
-var k, k1 int = testing(6, 7);
 
 func main(a int) (b int){
     var n int;
     var t1 = 0
     var ()
-    true(a, b)
+    var aaa int;
     var t2 = 1
     var nextTerm = 0
-	var i = 0
+
+    {
+        var xx int = 5;
+    }
+
+    xx = 5;
     
     for  {
         if i==1{

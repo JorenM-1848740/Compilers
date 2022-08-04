@@ -25,3 +25,16 @@ void SimpleStmt_::print(int d){
         assignment->print(d+1);
     }
 }
+
+void SimpleStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If simple statement is an expression
+    if (expression != nullptr){
+        vector<string> type = expression->getType(scopeStack, typeErrors);
+    }
+    if (incDecStmt != nullptr){
+        incDecStmt->typeCheck(scopeStack, typeErrors);
+    }
+    if (assignment != nullptr){
+        assignment->typeCheck(scopeStack, typeErrors);
+    }
+}

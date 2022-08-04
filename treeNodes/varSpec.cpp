@@ -55,7 +55,6 @@ void VarSpec_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
 
         vector<vector<string>> types;
         expressionList->getTypes(scopeStack, typeErrors, types);
-
         
         bool allSingleValued = true;
         for (int i = 0; i < types.size();++i){
@@ -121,7 +120,6 @@ void VarSpec_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
 
         vector<vector<string>> types;
         expressionList->getTypes(scopeStack, typeErrors, types);
-
         
         bool allSingleValued = true;
         for (int i = 0; i < types.size();++i){
