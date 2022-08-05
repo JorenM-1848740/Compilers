@@ -1,4 +1,5 @@
 #include "../absyn.hpp"
+#include "../treeClasses/scope.hpp"
 
 IfStmt_::IfStmt_(Expression e, Block b){
     expression = e;
@@ -68,5 +69,44 @@ bool IfStmt_::terminates(){
 }
 
 void IfStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
-    
+
+    vector<string> expressionType = expression->getType(scopeStack, typeErrors);
+
+    if (expressionType.size() != 1){
+        typeErrors.push_back("Expression in if statement must be single valued!");
+        return;
+    }
+
+    if (expressionType[0] != "bool"){
+        typeErrors.push_back("Expression in if statement must be boolean!");
+        return;
+    }
+
+    //If else case
+    if (block1 != nullptr && block2 != nullptr){
+        
+        scopeStack.push_back(new Scope_());
+        block1->typeCheck(scopeStack, typeErrors);
+        scopeStack.pop_back();
+
+        scopeStack.push_back(new Scope_());
+        block2->typeCheck(scopeStack, typeErrors);
+        scopeStack.pop_back();
+    }
+    //If else if case
+    else if (ifStmt != nullptr){
+
+        scopeStack.push_back(new Scope_());
+        block1->typeCheck(scopeStack, typeErrors);
+        scopeStack.pop_back();
+
+        ifStmt->typeCheck(scopeStack, typeErrors);
+    }
+    //If case
+    else{
+        
+        scopeStack.push_back(new Scope_());
+        block1->typeCheck(scopeStack, typeErrors);
+        scopeStack.pop_back();
+    }
 }

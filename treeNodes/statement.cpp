@@ -73,7 +73,6 @@ void Statement_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors
         simpleStmt->typeCheck(scopeStack, typeErrors);
     }
     else if (returnStmt != nullptr){
-        //TODO
         returnStmt->typeCheck(scopeStack, typeErrors);
     }
     else if (block != nullptr){
