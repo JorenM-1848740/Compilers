@@ -20,11 +20,16 @@ Vragen:
 
 
 TODO:  
-    Function call typechecken: DONE
-    Alle statements typechecken: IF/FOR/RETURN statements nog TODO
+    TYPECHECKER:
+    Functie namen mogen niet duplicate zijn
+    Main functie mag geen return en parameters hebben  
+    Functie call in functie call (multi valued expression in functie call)
+
+    INTERPRETER:
+    Print functie implementeren
+
+    PARSER:
+    (type) parse bug oplossen
 
     //MINDER BELANGRIJK MOMENTEEL
-    Functie namen mogen niet duplicate zijn
-    Print functie implementeren
-    (type) parse bug oplossen
-    Functie call in functie call (multi valued expression in functie call)
+    
