@@ -11,13 +11,10 @@ func main(a int) (b int){
     var aaa int;
     var t2 = 1
     var bbb int;
+    var i int;
 
-    if (ccc||true){
-        bbb = 6;
-    }else if true{
-        bbb = 7;
-    }else{
-        bbbb = 9;
+    for i = 0; i < 5;i = 5{
+        var i = 5;
     }
     
     return 5;

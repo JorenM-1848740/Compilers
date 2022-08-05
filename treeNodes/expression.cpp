@@ -37,21 +37,25 @@ vector<string> Expression_::getType(vector<Scope>& scopeStack, vector<string>& t
                 if (!(type1[0] == "int" && type2[0] == "int")){
                     typeErrors.push_back("Binary operator not supported for this type!");
                 }
+                return {"bool"};
             }
             if (op == "eq" || op == "ne"){
                 if (type1[0] != type2[0]){
                     typeErrors.push_back("Can't compare different types!");
                 }
+                return {"bool"};
             }
             if (op == "plus" || op == "min" || op == "mul" || op == "div"){
                 if (!(type1[0] == "int" && type2[0] == "int")){
                     typeErrors.push_back("Arithmetic operators not defined for this type!");
                 }
+                return {"int"};
             }
             if (op == "or" || op == "and"){
                 if (!(type1[0] == "bool" && type2[0] == "bool")){
                     typeErrors.push_back("Logical operator not defined for this type!");
                 }
+                return {"bool"};
             }
             return type1;
         }
