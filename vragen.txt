@@ -21,7 +21,7 @@ Vragen:
 
 TODO:  
     Function call typechecken: DONE
-    Alle statements typechecken
+    Alle statements typechecken: IF/FOR/RETURN statements nog TODO
 
     //MINDER BELANGRIJK MOMENTEEL
     Functie namen mogen niet duplicate zijn
