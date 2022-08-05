@@ -13,7 +13,7 @@ func main(a int) (b int){
     var bbb int;
     var i int;
 
-    for i = 0; i < 5;i = 5{
+    for i = 0; testing(3, 6);i = 5{
         var i = 5;
     }
     
@@ -24,15 +24,11 @@ func main(a int) (b int){
 
 var n = 5;
 
-func testing(d int, e int) (int, int){
+func testing(d int, e int) bool{
 
     var oo int = 0;
 
-    return testing2();
-
-    oo = 5;
-
-    return testing2()
+    return true;
 }
 
 func testing2()(a int, b int){

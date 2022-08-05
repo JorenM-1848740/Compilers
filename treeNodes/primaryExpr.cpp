@@ -78,8 +78,7 @@ vector<string> PrimaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& 
                 
             }
             else{
-                //TODO: Not only identifier as function name? Pointers?
-                typeErrors.push_back("TODO: not only identifier as function name (pointers)!");
+                typeErrors.push_back("Function name must be identifier!");
                 return {"undefined"};
             }
         }
