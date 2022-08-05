@@ -12,7 +12,7 @@ func main(a int) (b int){
     var t2 = 1
     var bbb int;
 
-    if (c||true){
+    if (ccc||true){
         bbb = 6;
     }else if true{
         bbb = 7;

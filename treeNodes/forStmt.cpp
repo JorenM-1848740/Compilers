@@ -1,4 +1,5 @@
 #include "../absyn.hpp"
+#include "../treeClasses/scope.hpp"
 
 ForStmt_::ForStmt_(Block b){
     block = b;
@@ -37,5 +38,36 @@ bool ForStmt_::terminates(){
 }
 
 void ForStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
-    
+    //Expression case
+    if (expression != nullptr){
+        vector<string> expressionType = expression->getType(scopeStack, typeErrors);
+
+        if (expressionType.size() != 1){
+            typeErrors.push_back("Expression in for statement must be single valued!");
+            return;
+        }
+
+        if (expressionType[0] != "bool"){
+            typeErrors.push_back("Expression in for statement must be boolean!");
+            return;
+        }
+
+        scopeStack.push_back(new Scope_());
+        block->typeCheck(scopeStack, typeErrors);
+        scopeStack.pop_back();
+    }
+    //For clause case
+    else if (forClause != nullptr){
+        forClause->typeCheck(scopeStack, typeErrors);
+
+        scopeStack.push_back(new Scope_());
+        block->typeCheck(scopeStack, typeErrors);
+        scopeStack.pop_back();
+    }
+    //No expression case
+    else{
+        scopeStack.push_back(new Scope_());
+        block->typeCheck(scopeStack, typeErrors);
+        scopeStack.pop_back();
+    }
 }

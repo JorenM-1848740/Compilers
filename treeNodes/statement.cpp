@@ -81,7 +81,6 @@ void Statement_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors
         scopeStack.pop_back();
     }
     else if (ifStmt != nullptr){
-        //TODO
         ifStmt->typeCheck(scopeStack, typeErrors);
     }
     //For statement case

@@ -433,6 +433,8 @@ struct ForClause_{
     void print(int d);
 
     bool hasCondition();
+
+    void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct Expression_{

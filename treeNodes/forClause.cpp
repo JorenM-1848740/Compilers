@@ -26,3 +26,21 @@ bool ForClause_::hasCondition(){
     }
     return true;
 }
+
+void ForClause_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    simpleStmt1->typeCheck(scopeStack, typeErrors);
+    simpleStmt2->typeCheck(scopeStack, typeErrors);
+    if (expression != nullptr){
+        vector<string> expressionType = expression->getType(scopeStack, typeErrors);
+
+        if (expressionType.size() != 1){
+            typeErrors.push_back("Expression in for clause must be single valued!");
+            return;
+        }
+
+        if (expressionType[0] != "bool"){
+            typeErrors.push_back("Expression in for clause must be boolean!");
+            return;
+        }
+    }
+}
