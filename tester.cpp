@@ -42,7 +42,6 @@ int main(int argc, char* argv[])
   //thesyntree->print(0);
   thesyntree->saveSignatures();
   thesyntree->typeCheck();
-  thesyntree->printScopeStack();
   thesyntree->printTypeErrors();
   return 0;
 }
