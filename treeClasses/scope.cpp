@@ -10,11 +10,15 @@ void Scope_::addVariableValue(string identifier, string type, string value){
 }
 
 Signature Scope_::getFunctionSignature(string identifier){
-    return functionMap.at(identifier);
+    return functionMap.at(identifier).first;
 }
 
-void Scope_::addFunctionSignature(string identifier, Signature signature){
-    functionMap.insert(std::pair<string, Signature>(identifier, signature));
+Block Scope_::getFunctionBlock(string identifier){
+    return functionMap.at(identifier).second;
+}
+
+void Scope_::addFunction(string identifier, Signature signature, Block block){
+    functionMap.insert(std::pair<string, std::pair<Signature, Block>>(identifier, std::pair<Signature, Block>(signature, block)));
 }
 
 void Scope_::print(){

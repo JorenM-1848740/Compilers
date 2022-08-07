@@ -18,10 +18,10 @@ void TopLevelDecl_::print(int d){
     };
 }
 
-void TopLevelDecl_::saveSignatures(vector<Scope>& scopeStack){
+void TopLevelDecl_::saveFunction(vector<Scope>& scopeStack){
     //If declaration is a function declaration
     if (functionDecl != nullptr){
-        functionDecl->saveSignatures(scopeStack);
+        functionDecl->saveFunction(scopeStack);
     }
 
 }
@@ -35,5 +35,17 @@ void TopLevelDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErr
     //If declaration is a variable declaration
     if (varDecl != nullptr){
         varDecl->typeCheck(scopeStack, typeErrors);
+    }
+}
+
+void TopLevelDecl_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //TODO: If declaration is a function declaration 
+    if (functionDecl != nullptr){
+        
+    }
+
+    //If declaration is a variable declaration
+    if (varDecl != nullptr){
+        varDecl->interpret(scopeStack, typeErrors);
     }
 }

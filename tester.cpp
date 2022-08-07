@@ -40,8 +40,17 @@ int main(int argc, char* argv[])
   // return 0;
   yyparse();
   //thesyntree->print(0);
-  thesyntree->saveSignatures();
+
   thesyntree->typeCheck();
-  thesyntree->printTypeErrors();
+  if (thesyntree->typeErrors.size() == 0){
+    thesyntree->interpret();
+  }
+  else{
+    cout << "\n////////////////////////////\n"; 
+    thesyntree->printTypeErrors();
+    cout << "Cant interpret because there are type errors!";
+    cout << "\n////////////////////////////\n\n"; 
+  }
+  
   return 0;
 }

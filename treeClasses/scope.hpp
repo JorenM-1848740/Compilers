@@ -8,10 +8,13 @@ using namespace std;
 struct Signature_;
 typedef Signature_ *Signature;
 
+struct Block_;
+typedef Block_ *Block;
+
 struct Scope_ {
 
     map<string, std::pair<string, string>> variableMap;
-    map<string, Signature> functionMap;
+    map<string, std::pair<Signature, Block>> functionMap;
     string currentFunctionTypeChecking = "";
 
     std::pair<string, string> getVariableValue(string identifier);
@@ -19,8 +22,9 @@ struct Scope_ {
     void addVariableValue(string identifier, string type, string value);
 
     Signature getFunctionSignature(string identifier);
+    Block getFunctionBlock(string identifier);
 
-    void addFunctionSignature(string identifier, Signature signature);
+    void addFunction(string identifier, Signature signature, Block block);
 
     string getCurrentFunctionTypeChecking(){
         return currentFunctionTypeChecking;

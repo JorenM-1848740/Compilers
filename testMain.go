@@ -8,8 +8,8 @@ func main(a int) (b int){
     var n int;
     var t1 = 4 +6
     var ()
-    var aaa int;
-    var t2 = 1
+    var aaa int = 5;
+    var t2  = 5;
     var bbb int;
     var i int;
 
@@ -22,11 +22,10 @@ func main(a int) (b int){
     
 }
 
-var n = 5;
-
 func testing(d int, e int) bool{
 
     var oo int = 0;
+    testing2()
 
     return true;
 }

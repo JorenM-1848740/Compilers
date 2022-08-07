@@ -91,11 +91,10 @@ struct SourceFile_ {
     SourceFile_(PackageClause p, TopLevelDeclList t);
 
     void print(int d);
-
-    void saveSignatures();
     void printScopeStack();
     void printTypeErrors();
     void typeCheck();
+    void interpret();
 };
 
 struct PackageClause_{
@@ -103,6 +102,7 @@ struct PackageClause_{
 
     PackageClause_(const char* p);
     void print(int d); 
+    void typeCheck(vector<string>& typeErrors);
 };
 
 struct TopLevelDeclList_{
@@ -114,8 +114,9 @@ struct TopLevelDeclList_{
 
     void print(int d);
 
-    void saveSignatures(vector<Scope>& scopeStack);
+    void saveFunction(vector<Scope>& scopeStack);
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct TopLevelDecl_{
@@ -127,8 +128,9 @@ struct TopLevelDecl_{
 
     void print(int d);
 
-    void saveSignatures(vector<Scope>& scopeStack);
+    void saveFunction(vector<Scope>& scopeStack);
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 
@@ -141,6 +143,7 @@ struct VarDecl_{
 
     void print(int d);
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct VarSpec_{
@@ -154,6 +157,7 @@ struct VarSpec_{
 
     void print(int d);
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct VarSpecList_{
@@ -166,6 +170,7 @@ struct VarSpecList_{
 
     void print(int d);
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct ExpressionList_{
@@ -176,6 +181,7 @@ struct ExpressionList_{
     ExpressionList_(Expression e);
 
     void getTypes(vector<Scope>& scopeStack, vector<string>& typeErrors, vector<vector<string>>& types);
+    void getValues(vector<Scope>& scopeStack, vector<string>& typeErrors, vector<vector<string>>& values);
 
     void print(int d);
 
@@ -212,7 +218,7 @@ struct FunctionDecl_{
 
     void print(int d);
 
-    void saveSignatures(vector<Scope>& scopeStack);
+    void saveFunction(vector<Scope>& scopeStack);
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
@@ -446,7 +452,8 @@ struct Expression_{
     Expression_(UnaryExpr ue);
     Expression_(Expression e1, const char* o, Expression e2);
 
-    vector<string> getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    vector<string> getType(vector<Scope>& scopeStack, vector<string>& typeErrors);    
+    vector<string> getValue(vector<Scope>& scopeStack, vector<string>& typeErrors);
 
     void print(int d);
 

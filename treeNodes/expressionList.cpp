@@ -26,6 +26,16 @@ void ExpressionList_::getTypes(vector<Scope>& scopeStack, vector<string>& typeEr
     }
 }
 
+void ExpressionList_::getValues(vector<Scope>& scopeStack, vector<string>& typeErrors, vector<vector<string>>& values){
+    if (expressionList == nullptr){
+        values.push_back(expression->getValue(scopeStack, typeErrors));
+    }
+    else{
+        expressionList->getValues(scopeStack, typeErrors, values);
+        values.push_back(expression->getValue(scopeStack, typeErrors));
+    }
+}
+
 void ExpressionList_::getIds(vector<string>& ids){
     if (expressionList == nullptr){
         ids.push_back(expression->getId());

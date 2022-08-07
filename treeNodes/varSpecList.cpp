@@ -26,3 +26,11 @@ void VarSpecList_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErro
         varSpec->typeCheck(scopeStack, typeErrors);
     }
 }
+
+void VarSpecList_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If there are var specifications in the list
+    if (varSpecList != nullptr){
+        varSpecList->interpret(scopeStack, typeErrors);
+        varSpec->interpret(scopeStack, typeErrors);
+    }
+}

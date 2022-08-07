@@ -16,8 +16,8 @@ FunctionDecl_::FunctionDecl_(const char* fn, Signature s, Block b){
     functionName = fn;
 }
 
-void FunctionDecl_::saveSignatures(vector<Scope>& scopeStack){
-    scopeStack.at(0)->addFunctionSignature(functionName, signature);
+void FunctionDecl_::saveFunction(vector<Scope>& scopeStack){
+    scopeStack.at(0)->addFunction(functionName, signature, block);
 }
 
 void FunctionDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){

@@ -74,3 +74,7 @@ string Expression_::getId(){
         return "";
     }
 }
+
+vector<string> Expression_::getValue(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    return {"5"};
+}

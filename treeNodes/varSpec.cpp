@@ -192,3 +192,52 @@ void VarSpec_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
         }
     }
 }
+
+void VarSpec_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If vars are not initialised
+    if (expressionList == nullptr){
+
+        string typeName = type->getType();
+
+        vector<string> identifierNames;
+        identifierList->getIdentifiers(identifierNames);
+
+        for (int i = 0; i < identifierNames.size();++i){
+            //Default values
+            if (typeName == "int"){
+                scopeStack[scopeStack.size() - 1]->addVariableValue(identifierNames[i], typeName, "0");
+            }
+            else if (typeName == "bool"){
+                scopeStack[scopeStack.size() - 1]->addVariableValue(identifierNames[i], typeName, "false");
+            }
+            else{
+                scopeStack[scopeStack.size() - 1]->addVariableValue(identifierNames[i], typeName, "undefined");
+            }
+            
+        }       
+    }
+    //If vars are initialised
+    else{
+        vector<string> identifierNames;
+        identifierList->getIdentifiers(identifierNames);
+
+        vector<vector<string>> expressionTypes;
+        expressionList->getTypes(scopeStack, typeErrors, expressionTypes);
+
+        vector<vector<string>> expressionValues;
+        expressionList->getValues(scopeStack, typeErrors, expressionValues);
+
+        //If expression list contains one multi valued expression
+        if (expressionValues.size() == 1 && expressionValues[0].size() > 1){
+            for (int i = 0; i < identifierNames.size();++i){
+                scopeStack[scopeStack.size()-1]->addVariableValue(identifierNames[i], expressionTypes[0][i], expressionValues[0][i]);
+            }
+        }
+        //If expression list contains single valued expressions
+        else{
+            for (int i = 0; i < identifierNames.size();++i){
+                scopeStack[scopeStack.size()-1]->addVariableValue(identifierNames[i], expressionTypes[i][0], expressionValues[i][0]);
+            }
+        }
+    }
+}

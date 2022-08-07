@@ -27,3 +27,14 @@ void VarDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
         varSpecList->typeCheck(scopeStack, typeErrors);
     }
 }
+
+void VarDecl_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If there is only one var specification
+    if (varSpec != nullptr){
+        varSpec->interpret(scopeStack, typeErrors);
+    }
+    //If there are multiple var specifications
+    if (varSpecList != nullptr){
+        varSpecList->interpret(scopeStack, typeErrors);
+    }
+}
