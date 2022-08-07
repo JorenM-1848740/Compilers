@@ -12,3 +12,7 @@ void Literal_::print(int d){
 string Literal_::getLiteralType(){
     return literalType;
 }
+
+string Literal_::getLiteralValue(){
+    return literal;
+}

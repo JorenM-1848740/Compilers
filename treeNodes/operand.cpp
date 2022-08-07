@@ -62,6 +62,34 @@ vector<string> Operand_::getType(vector<Scope>& scopeStack, vector<string>& type
     }
 }
 
+vector<string> Operand_::getValue(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    vector<string> returnValue;
+    //If operand is a literal
+    if (literal != nullptr){
+        returnValue.push_back(literal->getLiteralValue());
+        return returnValue;
+    }
+    //If operand is an expression
+    else if (expression != nullptr){
+        return expression->getValue(scopeStack, typeErrors);
+    }
+    //If operand is a variable
+    else{
+        std::pair<string, string> typeValue;
+        //Find variable in scope stack, starting from most recent scope
+        for (int i = 0; i < scopeStack.size();++i){
+            try{
+                typeValue = scopeStack[scopeStack.size()-1-i]->getVariableValue(id);
+                break;
+            }
+            catch (exception e){          
+            }           
+        }
+        returnValue.push_back(typeValue.second);  
+        return returnValue;     
+    }
+}
+
 string Operand_::getId(){
     if (expression != nullptr){
         return expression->getId();

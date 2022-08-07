@@ -76,5 +76,141 @@ string Expression_::getId(){
 }
 
 vector<string> Expression_::getValue(vector<Scope>& scopeStack, vector<string>& typeErrors){
-    return {"5"};
+    //If expression is a unary expression
+    if (unaryExpr != nullptr){
+        return unaryExpr->getValue(scopeStack, typeErrors);
+        //return unaryExpr->getValue(scopeStack, typeErrors);
+    }
+    //If expression is a compound expression
+    else{
+        vector<string> value1 = expression1->getValue(scopeStack, typeErrors);
+        vector<string> value2 = expression2->getValue(scopeStack, typeErrors);
+
+        vector<string> returnValues;
+        
+        if (op == "gt"){
+            bool newValue = stoi(value1[0]) > stoi(value2[0]);
+            if (newValue){
+                returnValues.push_back("true");
+            }
+            else{
+                returnValues.push_back("false");
+            }
+        }
+        if (op == "ge"){
+            bool newValue = stoi(value1[0]) >= stoi(value2[0]);
+            if (newValue){
+                returnValues.push_back("true");
+            }
+            else{
+                returnValues.push_back("false");
+            }
+        }
+        if (op == "lt"){
+            bool newValue = stoi(value1[0]) < stoi(value2[0]);
+            if (newValue){
+                returnValues.push_back("true");
+            }
+            else{
+                returnValues.push_back("false");
+            }
+        }
+        if (op == "le"){
+            bool newValue = stoi(value1[0]) <= stoi(value2[0]);
+            if (newValue){
+                returnValues.push_back("true");
+            }
+            else{
+                returnValues.push_back("false");
+            }
+        }
+        if (op == "eq"){
+
+            bool newValue = value1[0] == value2[0];
+            if (newValue){
+                returnValues.push_back("true");
+            }
+            else{
+                returnValues.push_back("false");
+            }
+        }
+        if (op == "ne"){
+            bool newValue = value1[0] != value2[0];
+            if (newValue){
+                returnValues.push_back("true");
+            }
+            else{
+                returnValues.push_back("false");
+            }
+        }
+        if (op == "plus"){
+            int newValue = stoi(value1[0]) + stoi(value2[0]);
+            returnValues.push_back(to_string(newValue));
+        }
+        if (op == "min"){
+            int newValue = stoi(value1[0]) - stoi(value2[0]);
+            returnValues.push_back(to_string(newValue));
+        }
+        if (op == "mul"){
+            int newValue = stoi(value1[0]) * stoi(value2[0]);
+            returnValues.push_back(to_string(newValue));
+        }
+        if (op == "div"){
+            int newValue = stoi(value1[0]) / stoi(value2[0]);
+            returnValues.push_back(to_string(newValue));
+        }
+        if (op == "or"){
+            bool firstBool;
+            bool secondBool;
+            if (value1[0] == "true"){
+                firstBool = true;
+            }
+            else{
+                firstBool = false;
+            }
+            if (value2[0] == "true"){
+                secondBool = true;
+            }
+            else{
+                secondBool = false;
+            }
+
+            bool newValue = firstBool || secondBool;
+
+            if (newValue){
+                returnValues.push_back("true");
+            }
+            else{
+                returnValues.push_back("false");
+            }
+
+        }
+        if (op == "and"){
+            bool firstBool;
+            bool secondBool;
+            if (value1[0] == "true"){
+                firstBool = true;
+            }
+            else{
+                firstBool = false;
+            }
+            if (value2[0] == "true"){
+                secondBool = true;
+            }
+            else{
+                secondBool = false;
+            }
+
+            bool newValue = firstBool && secondBool;
+
+            if (newValue){
+                returnValues.push_back("true");
+            }
+            else{
+                returnValues.push_back("false");
+            }
+        }
+
+        return returnValues;
+    }
 }

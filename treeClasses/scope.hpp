@@ -18,12 +18,10 @@ struct Scope_ {
     string currentFunctionTypeChecking = "";
 
     std::pair<string, string> getVariableValue(string identifier);
-
     void addVariableValue(string identifier, string type, string value);
 
     Signature getFunctionSignature(string identifier);
     Block getFunctionBlock(string identifier);
-
     void addFunction(string identifier, Signature signature, Block block);
 
     string getCurrentFunctionTypeChecking(){

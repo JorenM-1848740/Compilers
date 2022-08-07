@@ -472,6 +472,7 @@ struct Operand_{
     void print(int d);
 
     vector<string> getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    vector<string> getValue(vector<Scope>& scopeStack, vector<string>& typeErrors);
 
     string getId();
 };
@@ -482,6 +483,7 @@ struct Literal_{
 
     Literal_(const char* l, const char* lt);
     string getLiteralType();
+    string getLiteralValue();
 
     void print(int d);
 };
@@ -495,6 +497,7 @@ struct PrimaryExpr_{
     PrimaryExpr_(PrimaryExpr pe, Arguments a);
 
     vector<string> getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    vector<string> getValue(vector<Scope>& scopeStack, vector<string>& typeErrors);
 
     string getId();
 
@@ -522,6 +525,7 @@ struct UnaryExpr_{
     UnaryExpr_(Unary_op uo, UnaryExpr ue);
 
     vector<string> getType(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    vector<string> getValue(vector<Scope>& scopeStack, vector<string>& typeErrors);
 
     void print(int d);
 

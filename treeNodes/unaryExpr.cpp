@@ -47,6 +47,35 @@ vector<string> UnaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& ty
     }
 }
 
+vector<string> UnaryExpr_::getValue(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If there is a unary operator
+    if (unary_op != nullptr){  
+        vector<string> value = unaryExpr->getValue(scopeStack, typeErrors);
+        string operatorName = unary_op->getOperatorName();
+        vector<string> returnValue;
+        if (operatorName == "plus"){
+            returnValue.push_back(value[0]);
+        }
+        if (operatorName == "min"){
+            int newValue = -stoi(value[0]);
+            returnValue.push_back(to_string(newValue));
+        }
+        if (operatorName == "not"){
+            if (value[0] == "true"){
+                returnValue.push_back("false");
+            }
+            else{
+                returnValue.push_back("true");
+            }
+        }
+        return returnValue;
+    }    
+    //If there is no unary operator
+    else{
+        return primaryExpr->getValue(scopeStack, typeErrors);
+    }
+}
+
 string UnaryExpr_::getId(){
     if (primaryExpr != nullptr){
         return primaryExpr->getId();

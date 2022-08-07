@@ -91,6 +91,17 @@ vector<string> PrimaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& 
     }
 }
 
+vector<string> PrimaryExpr_::getValue(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    //If operand
+    if (arguments == nullptr){
+        return operand->getValue(scopeStack, typeErrors);
+    }
+    //TODO: If function call
+    else{
+        return {"1"};
+    }
+}
+
 string PrimaryExpr_::getId(){
     if (operand != nullptr){
         return operand->getId();
