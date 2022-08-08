@@ -16,22 +16,27 @@ struct Scope_ {
 
     map<string, std::pair<string, string>> variableMap;
     map<string, std::pair<Signature, Block>> functionMap;
-    string currentFunctionTypeChecking = "";
+    vector<string> currentFunctionStack;
     vector<string> currentFunctionResultValues;
 
     std::pair<string, string> getVariableValue(string identifier);
     void addVariableValue(string identifier, string type, string value);
+    void updateVariableValue(string identifier, string type, string value);
 
     Signature getFunctionSignature(string identifier);
     Block getFunctionBlock(string identifier);
     void addFunction(string identifier, Signature signature, Block block);
 
-    string getCurrentFunctionTypeChecking(){
-        return currentFunctionTypeChecking;
+    string getCurrentFunctionName(){
+        return currentFunctionStack[currentFunctionStack.size()-1];
     }
 
-    void setCurrentFunctionTypeChecking(string s){
-        currentFunctionTypeChecking = s;
+    void pushCurrentFunctionStack(string s){
+        currentFunctionStack.push_back(s);
+    }
+
+    void popCurrentFunctionStack(){
+        currentFunctionStack.pop_back();
     }
 
     vector<string> getCurrentFunctionResultValues(){

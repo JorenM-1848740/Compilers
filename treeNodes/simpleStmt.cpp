@@ -38,3 +38,15 @@ void SimpleStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeError
         assignment->typeCheck(scopeStack, typeErrors);
     }
 }
+
+void SimpleStmt_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    if (expression != nullptr){
+        expression->getValue(scopeStack, typeErrors);
+    }
+    if (incDecStmt != nullptr){
+        incDecStmt->interpret(scopeStack, typeErrors);
+    }
+    if (assignment != nullptr){
+        assignment->interpret(scopeStack, typeErrors);
+    }
+}

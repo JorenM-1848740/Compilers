@@ -25,12 +25,9 @@ TODO:
     TYPECHECKER:
     Functie namen mogen niet duplicate zijn
     Main functie mag geen return en parameters hebben  
-    Functie call in functie call (multi valued expression in functie call)
-    Print functie typechecken
 
     INTERPRETER:
-    Var decl interpreten: DONE (enkel funciton call nog)
-    Print functie implementeren
+    Main functie automatisch callen
 
     PARSER:
     (type) parse bug oplossen

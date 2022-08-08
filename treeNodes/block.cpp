@@ -16,3 +16,9 @@ void Block_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
 bool Block_::terminates(){
     return statementList->terminates();
 }
+
+void Block_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted){
+    if (!halted){
+        statementList->interpret(scopeStack, typeErrors, halted);
+    }
+}

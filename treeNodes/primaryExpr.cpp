@@ -26,6 +26,11 @@ vector<string> PrimaryExpr_::getType(vector<Scope>& scopeStack, vector<string>& 
     if (arguments == nullptr){
         return operand->getType(scopeStack, typeErrors);
     }
+    //If function call is print function
+    else if (primaryExpr->getId() == "print"){
+        vector<vector<string>> types = arguments->getArgumentTypes(scopeStack, typeErrors);
+        return {};
+    }
     //If expression is a function call
     else{
         vector<vector<string>> types = arguments->getArgumentTypes(scopeStack, typeErrors);
@@ -145,6 +150,17 @@ vector<string> PrimaryExpr_::getValue(vector<Scope>& scopeStack, vector<string>&
     if (arguments == nullptr){
         return operand->getValue(scopeStack, typeErrors);
     }
+    //If function call is print function
+    else if (primaryExpr->getId() == "print"){
+        vector<vector<string>> values = arguments->getArgumentValues(scopeStack, typeErrors);
+        for (int i = 0; i < values.size();++i){
+            for (int j = 0; j < values[i].size();++j){
+                cout << values[i][j] << " ";
+            }
+            cout << "\n";
+        }
+        return {};
+    }
     //If function call
     else{
         string functionName = primaryExpr->getId();
@@ -199,8 +215,9 @@ vector<string> PrimaryExpr_::getValue(vector<Scope>& scopeStack, vector<string>&
             }
         }
 
-        //functionBlock->interpret(scopeStack, typeErrors, halted);
-        scopeStack[scopeStack.size()-1]->print();
+        scopeStack[0]->pushCurrentFunctionStack(functionName);
+        functionBlock->interpret(scopeStack, typeErrors, halted);
+        scopeStack[0]->popCurrentFunctionStack();
         scopeStack.pop_back();
 
         //Get result value of function

@@ -25,3 +25,26 @@ void IncDecStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeError
         typeErrors.push_back("Increment or decrement statement not defined for this type!");
     }       
 }
+
+void IncDecStmt_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    string id = expression->getId();
+    //Search for identifier
+    std::pair<string, string> typeValue;
+    int scopeLevel = 0;
+    for (int i = 0; i < scopeStack.size();++i){
+        try{
+            typeValue = scopeStack[scopeStack.size()-1-i]->getVariableValue(id);
+            break;
+        }
+        catch (exception e){          
+        }        
+        scopeLevel++;   
+    }
+
+    if (incDec == "inc"){
+        scopeStack[scopeStack.size()-1-scopeLevel]->updateVariableValue(id, typeValue.first, to_string(stoi(typeValue.second) + 1));
+    }
+    else{
+        scopeStack[scopeStack.size()-1-scopeLevel]->updateVariableValue(id, typeValue.first, to_string(stoi(typeValue.second) - 1));
+    }
+}

@@ -36,3 +36,13 @@ void StatementList_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeEr
         statement->typeCheck(scopeStack, typeErrors);
     }
 }
+
+void StatementList_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted){
+    if (!halted){
+        //If there are statements to interpret
+        if (statementList != nullptr){
+            statementList->interpret(scopeStack, typeErrors, halted);
+            statement->interpret(scopeStack, typeErrors, halted);
+        }
+    }   
+}

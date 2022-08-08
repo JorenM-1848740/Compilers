@@ -89,3 +89,30 @@ void Statement_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors
         forStmt->typeCheck(scopeStack, typeErrors);
     }
 }
+
+void Statement_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted){
+    if (!halted){
+        if (varDecl != nullptr){
+            varDecl->interpret(scopeStack, typeErrors);
+        }
+        else if (simpleStmt != nullptr){
+            simpleStmt->interpret(scopeStack, typeErrors);
+        }
+        else if (returnStmt != nullptr){
+            returnStmt->interpret(scopeStack, typeErrors, halted);
+        }
+        else if (block != nullptr){
+            scopeStack.push_back(new Scope_());
+            block->interpret(scopeStack, typeErrors, halted);
+            scopeStack.pop_back();
+        }
+        else if (ifStmt != nullptr){
+            ifStmt->interpret(scopeStack, typeErrors, halted);
+        }
+        //For statement case
+        else{
+            forStmt->interpret(scopeStack, typeErrors, halted);
+        }
+    }
+    
+}

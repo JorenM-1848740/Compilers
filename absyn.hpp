@@ -246,6 +246,7 @@ struct Block_{
     void print(int d);
 
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted);
 
     bool terminates();
 };
@@ -316,6 +317,7 @@ struct StatementList_{
 
     bool terminates();
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted);
 };
 
 struct Statement_{
@@ -338,6 +340,7 @@ struct Statement_{
 
     bool terminates();
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted);
 };
 
 struct SimpleStmt_{
@@ -353,6 +356,7 @@ struct SimpleStmt_{
     void print(int d);
 
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct ReturnStmt_{
@@ -364,6 +368,7 @@ struct ReturnStmt_{
     void print(int d);
 
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted);
 };
 
 struct IfStmt_{
@@ -385,7 +390,7 @@ struct IfStmt_{
     bool terminates();
 
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
-
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted);
 
 };
 
@@ -403,6 +408,7 @@ struct ForStmt_{
     bool terminates();
 
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted);
 };
 
 struct IncDecStmt_{
@@ -414,6 +420,7 @@ struct IncDecStmt_{
     void print(int d);
 
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct Assignment_{
@@ -426,6 +433,7 @@ struct Assignment_{
     void print(int d);
 
     void typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    void interpret(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct ForClause_{

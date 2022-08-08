@@ -71,3 +71,43 @@ void ForStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
         scopeStack.pop_back();
     }
 }
+
+void ForStmt_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted){
+    if (!halted){
+        //Expression case
+        if (expression != nullptr){
+            while (expression->getValue(scopeStack, typeErrors)[0] == "true" && !halted){
+                scopeStack.push_back(new Scope_());
+                block->interpret(scopeStack, typeErrors, halted);
+                scopeStack.pop_back();
+            }
+
+        }
+        //For clause case
+        //Logic is implemented in this class in stead of forClause class
+        else if (forClause != nullptr){
+            //Interpret initial statement once
+            forClause->simpleStmt1->interpret(scopeStack, typeErrors);
+            while (forClause->expression->getValue(scopeStack, typeErrors)[0] == "true" && !halted){
+                scopeStack.push_back(new Scope_());
+                block->interpret(scopeStack, typeErrors, halted);
+                scopeStack.pop_back();
+                //Interpret post statement each iteration
+                forClause->simpleStmt2->interpret(scopeStack, typeErrors);
+            }
+
+        }
+        //No expression case
+        else{
+            while(!halted){
+                scopeStack.push_back(new Scope_());
+                block->interpret(scopeStack, typeErrors, halted);
+                scopeStack.pop_back();
+            }
+        }
+
+
+
+
+    }
+}

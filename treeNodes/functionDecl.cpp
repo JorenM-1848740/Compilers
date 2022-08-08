@@ -116,9 +116,9 @@ void FunctionDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErr
         }
     }   
 
-    scopeStack[0]->setCurrentFunctionTypeChecking(functionName);
+    scopeStack[0]->pushCurrentFunctionStack(functionName);
     block->typeCheck(scopeStack, typeErrors);
-    scopeStack[0]->setCurrentFunctionTypeChecking("");
+    scopeStack[0]->popCurrentFunctionStack();
 
     //Remove scope
     scopeStack.pop_back();

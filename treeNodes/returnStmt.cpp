@@ -18,7 +18,7 @@ void ReturnStmt_::print(int d){
 
 void ReturnStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
 
-    string currentFunctionName = scopeStack[0]->getCurrentFunctionTypeChecking();
+    string currentFunctionName = scopeStack[0]->getCurrentFunctionName();
     Signature currentFunctionSignature = scopeStack[0]->getFunctionSignature(currentFunctionName);
     vector<std::pair<string, string>> signatureResults = currentFunctionSignature->getResults();
 
@@ -109,6 +109,58 @@ void ReturnStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeError
         }
     }
 
-    
+}
 
+void ReturnStmt_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted){
+    if (!halted){
+        string currentFunctionName = scopeStack[0]->getCurrentFunctionName();
+        Signature currentFunctionSignature = scopeStack[0]->getFunctionSignature(currentFunctionName);
+        vector<std::pair<string, string>> signatureResults = currentFunctionSignature->getResults();
+
+        //If there are no results in the signature
+        if (signatureResults.size() == 0){
+            halted = true;
+            return;
+        }
+        //If there are no results in the result statement, use named parameters from signature
+        else if (expressionList == nullptr){
+            vector<string> returnValues;
+            for (int i = 0; i < signatureResults.size();++i){
+                returnValues.push_back(scopeStack[scopeStack.size()-1]->getVariableValue(signatureResults[i].first).second);
+            }
+            scopeStack[0]->setCurrentFunctionResultValues(returnValues);
+            halted = true;
+            return;
+        }
+        //If there are result values in the result statement
+        else{
+            vector<vector<string>> returnValues;
+            vector<string> newReturnValues;
+            expressionList->getValues(scopeStack, typeErrors, returnValues);
+
+            bool allSingleValued = true;
+            for (int i = 0; i < returnValues.size();++i){
+                if (returnValues[i].size() != 1){
+                    allSingleValued = false;
+                    break;
+                }
+            }
+
+            if (allSingleValued){
+                for (int i = 0; i < returnValues.size();++i){
+                    newReturnValues.push_back(returnValues[i][0]);
+                }
+            }
+            //If single multi valued return value
+            else{
+                for (int i = 0; i < returnValues[0].size();++i){
+                    newReturnValues.push_back(returnValues[0][i]);
+                }
+            }
+
+            scopeStack[0]->setCurrentFunctionResultValues(newReturnValues);
+            halted = true;
+            return;
+        }
+    }
 }

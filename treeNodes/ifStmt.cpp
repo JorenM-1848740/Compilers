@@ -84,6 +84,10 @@ void IfStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
 
     //If else case
     if (block1 != nullptr && block2 != nullptr){
+
+        if (simpleStmt != nullptr){
+            simpleStmt->typeCheck(scopeStack, typeErrors);
+        }
         
         scopeStack.push_back(new Scope_());
         block1->typeCheck(scopeStack, typeErrors);
@@ -96,6 +100,10 @@ void IfStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
     //If else if case
     else if (ifStmt != nullptr){
 
+        if (simpleStmt != nullptr){
+            simpleStmt->typeCheck(scopeStack, typeErrors);
+        }
+
         scopeStack.push_back(new Scope_());
         block1->typeCheck(scopeStack, typeErrors);
         scopeStack.pop_back();
@@ -104,9 +112,58 @@ void IfStmt_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErrors){
     }
     //If case
     else{
+
+        if (simpleStmt != nullptr){
+            simpleStmt->typeCheck(scopeStack, typeErrors);
+        }
         
         scopeStack.push_back(new Scope_());
         block1->typeCheck(scopeStack, typeErrors);
         scopeStack.pop_back();
     }
+}
+
+void IfStmt_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors, bool& halted){
+
+    if (!halted){
+        if (simpleStmt != nullptr){
+            simpleStmt->interpret(scopeStack, typeErrors);
+        }
+
+        vector<string> expressionResult = expression->getValue(scopeStack, typeErrors);
+        //If else case
+        if (block1 != nullptr && block2 != nullptr){
+            if (expressionResult[0] == "true"){
+                scopeStack.push_back(new Scope_());
+                block1->interpret(scopeStack, typeErrors, halted);
+                scopeStack.pop_back();
+            }
+            else{
+                scopeStack.push_back(new Scope_());
+                block2->interpret(scopeStack, typeErrors, halted);
+                scopeStack.pop_back();
+            }
+        }
+        //If else if case
+        else if (ifStmt != nullptr){
+            if (expressionResult[0] == "true"){
+                scopeStack.push_back(new Scope_());
+                block1->interpret(scopeStack, typeErrors, halted);
+                scopeStack.pop_back();
+            }
+            else{
+                ifStmt->interpret(scopeStack, typeErrors, halted);
+            }
+        }
+        //If case
+        else{
+            if (expressionResult[0] == "true"){
+                scopeStack.push_back(new Scope_());
+                block1->interpret(scopeStack, typeErrors, halted);
+                scopeStack.pop_back();
+            }
+        }
+    }
+    
+
 }

@@ -9,6 +9,10 @@ void Scope_::addVariableValue(string identifier, string type, string value){
     variableMap.insert(std::pair<string, std::pair<string, string>>(identifier, std::pair<string, string>(type, value)));
 }
 
+void Scope_::updateVariableValue(string identifier, string type, string value){
+    variableMap[identifier] = std::pair<string, string>(type, value);
+}
+
 Signature Scope_::getFunctionSignature(string identifier){
     return functionMap.at(identifier).first;
 }

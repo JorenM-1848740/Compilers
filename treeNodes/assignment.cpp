@@ -84,3 +84,64 @@ void Assignment_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeError
     }
 
 }
+
+void Assignment_::interpret(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    vector<vector<string>> values;
+    vector<string> ids;
+    expressionList1->getIds(ids);
+    expressionList2->getValues(scopeStack, typeErrors, values);
+
+    bool allSingleValued = true;
+    for (int i = 0; i < values.size();++i){
+        if (values[i].size() != 1){
+            allSingleValued = false;
+            break;
+        }
+    }
+
+    if(allSingleValued){
+        for (int i = 0; i < ids.size();++i){
+            //Search for identifier in scope stack
+            std::pair<string, string> typeValue;
+            int scopeLevel = 0;
+            for (int j = 0; j < scopeStack.size();++j){
+                try{
+                    typeValue = scopeStack[scopeStack.size()-1-j]->getVariableValue(ids[i]);   
+                    break;
+                }
+                catch (exception e){    
+                            
+                }        
+                scopeLevel++; 
+            }
+
+            //Update scope stack
+            scopeStack[scopeStack.size()-1-scopeLevel]->updateVariableValue(ids[i], typeValue.first, values[i][0]);
+
+        }       
+    }
+    //If one multi valued expression
+    else{
+        for (int i = 0; i < ids.size();++i){
+            //Search for identifier in scope stack
+            std::pair<string, string> typeValue;
+            int scopeLevel = 0;
+            for (int j = 0; j < scopeStack.size();++j){
+                try{
+                    typeValue = scopeStack[scopeStack.size()-1-j]->getVariableValue(ids[i]);
+                    break;
+                }
+                catch (exception e){          
+                }        
+                scopeLevel++;   
+            }
+
+            //Update scope stack
+            scopeStack[scopeStack.size()-1-scopeLevel]->updateVariableValue(ids[i], typeValue.first, values[0][i]);
+
+        }     
+    }
+
+
+}
+
