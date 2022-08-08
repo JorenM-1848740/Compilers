@@ -15,7 +15,7 @@ Parameters_::Parameters_(){
 }
 
 void Parameters_::getParameters(vector<std::pair<string, string>>& parameterVector){
-    //If parameter list is empty
+    //If parameter list isn't empty
     if (parameterList != nullptr){
         parameterList->getParameters(parameterVector);
     }

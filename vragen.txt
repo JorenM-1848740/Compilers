@@ -18,6 +18,8 @@ Vragen:
     Meerdere soorten scopes? (If/for vs functies): NEE! typechecker lost problemen op, zelfde principe bij interpreter
 
 
+RETURNSTACK
+
 
 TODO:  
     TYPECHECKER:
@@ -27,7 +29,7 @@ TODO:
     Print functie typechecken
 
     INTERPRETER:
-    Var decl interpreten
+    Var decl interpreten: DONE (enkel funciton call nog)
     Print functie implementeren
 
     PARSER:

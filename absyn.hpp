@@ -514,6 +514,7 @@ struct Arguments_{
     void print(int d);
 
     vector<vector<string>> getArgumentTypes(vector<Scope>& scopeStack, vector<string>& typeErrors);
+    vector<vector<string>> getArgumentValues(vector<Scope>& scopeStack, vector<string>& typeErrors);
 };
 
 struct UnaryExpr_{

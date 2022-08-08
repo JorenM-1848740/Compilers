@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include <vector>
 using namespace std;
 
 struct Signature_;
@@ -16,6 +17,7 @@ struct Scope_ {
     map<string, std::pair<string, string>> variableMap;
     map<string, std::pair<Signature, Block>> functionMap;
     string currentFunctionTypeChecking = "";
+    vector<string> currentFunctionResultValues;
 
     std::pair<string, string> getVariableValue(string identifier);
     void addVariableValue(string identifier, string type, string value);
@@ -30,6 +32,14 @@ struct Scope_ {
 
     void setCurrentFunctionTypeChecking(string s){
         currentFunctionTypeChecking = s;
+    }
+
+    vector<string> getCurrentFunctionResultValues(){
+        return currentFunctionResultValues;
+    }
+
+    void setCurrentFunctionResultValues(vector<string> result){
+        currentFunctionResultValues = result;
     }
 
     Scope_();

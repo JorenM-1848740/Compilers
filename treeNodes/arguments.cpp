@@ -27,3 +27,14 @@ vector<vector<string>> Arguments_::getArgumentTypes(vector<Scope>& scopeStack, v
         return types;
     }
 }
+
+vector<vector<string>> Arguments_::getArgumentValues(vector<Scope>& scopeStack, vector<string>& typeErrors){
+    vector<vector<string>> values;
+    if (expressionList == nullptr){
+        return values;
+    }
+    else{
+        expressionList->getValues(scopeStack, typeErrors, values);
+        return values;
+    }
+}

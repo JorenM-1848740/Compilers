@@ -56,8 +56,8 @@ void FunctionDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErr
     }
    }
 
-   if (!(namedParams || unnamedParams)){
-    typeErrors.push_back("Parameters of function are not all named or all unnamed!");
+   if (!(namedParams)){
+    typeErrors.push_back("Parameters of function must all be named!");
    }
 
    vector<string> allIdentifiersResults;
@@ -78,7 +78,7 @@ void FunctionDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErr
    }
 
    if (!(namedResults || unnamedResults)){
-    typeErrors.push_back("Parameters of function are not all named or all unnamed!");
+    typeErrors.push_back("Results of function are not all named or all unnamed!");
    }
 
    //Check uniqueness of identifiers
@@ -89,6 +89,7 @@ void FunctionDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErr
     std::set<string> s(allIdentifiersParams.begin(), allIdentifiersParams.end());
     if (s.size() != allIdentifiersParams.size()){
         typeErrors.push_back("There are duplicate identifiers in the function signature!");
+        return;
     }
 
     //Add signature to new scope
