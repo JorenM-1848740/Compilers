@@ -1,23 +1,19 @@
 package main
 
+func fibonaci(i int) (ret int) {
+   if i == 0 {
+      return 0
+   }
+   if i == 1 {
+      return 1
+   }
+   ret = fibonaci(i-1) + fibonaci(i-2)
+   return
+}
+
 func main() {
-
-    if 7/2 == 0 {
-        print(1)
-    } else {
-        print(2)
-    }
-
-    if 8/4 == 0 {
-        print(3)
-    }
-
-    var num int;
-    if num = 9; num < 0 {
-        print(num, 4)
-    } else if num < 10 {
-        print(num, 5)
-    } else {
-        print(num, 6)
-    }
+   var i int;
+   for i = 0; i < 100; i++ {
+      print(fibonaci(i))
+   }
 }
