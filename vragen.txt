@@ -26,10 +26,12 @@ TODO:
     Functie namen mogen niet duplicate zijn
 
     INTERPRETER:
-    Globale variabelen al te gebruiken voor declaratie?
 
     PARSER:
     (type) parse bug oplossen
 
-    //MINDER BELANGRIJK MOMENTEEL
+    BUGS:
+    Globale variablen declararen na functie declaraties
+        Typechecker: checkt eerst main functie, variable not declared
+        Interpreter: main functie opgeroepen op einde dus ok, maar hulpfuncties hebben geen access tot later gedefinieerde globale variabelen
     
