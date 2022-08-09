@@ -38,6 +38,13 @@ void FunctionDecl_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeErr
     }
     */
 
+   //Check if it's the main function
+    if (functionName == "main"){
+        if (!(parameters.size() == 0 && results.size() == 0)){
+            typeErrors.push_back("Main function can't have parameters or return values!");
+        }
+    }
+
    //Check if everything is named or unnamed
    vector<string> allIdentifiersParams;
    for (int i = 0; i < parameters.size();++i){

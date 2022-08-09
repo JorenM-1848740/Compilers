@@ -24,10 +24,9 @@ RETURNSTACK
 TODO:  
     TYPECHECKER:
     Functie namen mogen niet duplicate zijn
-    Main functie mag geen return en parameters hebben  
 
     INTERPRETER:
-    Main functie automatisch callen
+    Globale variabelen al te gebruiken voor declaratie?
 
     PARSER:
     (type) parse bug oplossen

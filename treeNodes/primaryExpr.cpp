@@ -157,7 +157,6 @@ vector<string> PrimaryExpr_::getValue(vector<Scope>& scopeStack, vector<string>&
             for (int j = 0; j < values[i].size();++j){
                 cout << values[i][j] << " ";
             }
-            cout << "\n";
         }
         return {};
     }

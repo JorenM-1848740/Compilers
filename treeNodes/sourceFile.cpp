@@ -29,18 +29,38 @@ void SourceFile_::printTypeErrors(){
 
 
 void SourceFile_::typeCheck(){
-
     packageClause->typeCheck(typeErrors);
     scopeStack.push_back(new Scope_());
     topLevelDeclList->saveFunction(scopeStack);
+
+    try{
+        scopeStack[0]->getFunctionSignature("main");
+    }
+    catch(exception e){
+        typeErrors.push_back("There isn't a main function in this program!");
+        return;
+    }
+
     topLevelDeclList->typeCheck(scopeStack, typeErrors);
     scopeStack.pop_back();
 }
 
 void SourceFile_::interpret(){
     scopeStack.push_back(new Scope_());
+    
     topLevelDeclList->saveFunction(scopeStack);
     topLevelDeclList->interpret(scopeStack, typeErrors);
-    scopeStack[0]->print();
+
+    //Interpret main function
+    string functionName = "main";
+    Block functionBlock = scopeStack[0]->getFunctionBlock(functionName);
+    bool halted = false;
+
+    scopeStack.push_back(new Scope_());
+    scopeStack[0]->pushCurrentFunctionStack(functionName);
+    functionBlock->interpret(scopeStack, typeErrors, halted);
+    scopeStack[0]->popCurrentFunctionStack();
+    scopeStack.pop_back();
+
     scopeStack.pop_back();
 }
