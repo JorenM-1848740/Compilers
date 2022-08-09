@@ -124,10 +124,23 @@ void ReturnStmt_::interpret(vector<Scope>& scopeStack, vector<string>& typeError
         }
         //If there are no results in the result statement, use named parameters from signature
         else if (expressionList == nullptr){
+
+
+            std::pair<string, string> typeValue;
             vector<string> returnValues;
+            //Find variable in scope stack, starting from most recent scope
             for (int i = 0; i < signatureResults.size();++i){
-                returnValues.push_back(scopeStack[scopeStack.size()-1]->getVariableValue(signatureResults[i].first).second);
+                for (int j = 0; j < scopeStack.size();++j){
+                    try{
+                        typeValue = scopeStack[scopeStack.size()-1-j]->getVariableValue(signatureResults[i].first);
+                        break;
+                    }
+                    catch (exception e){          
+                    }           
+                }
+                returnValues.push_back(typeValue.second);
             }
+
             scopeStack[0]->setCurrentFunctionResultValues(returnValues);
             halted = true;
             return;
