@@ -11,14 +11,8 @@ func fib(n int) (a int) {
 	return
 };
 
-func returns2() (int, int){
-	return 0, 0
-}
-
 func main() {
-	var i int;
+	var i bool = true
 
-	var a, j, k int= fib(10), returns2()
-	print(j)
 	
 }

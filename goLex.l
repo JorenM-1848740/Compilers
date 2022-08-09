@@ -38,7 +38,7 @@ whitespace (" "|"\t"|"\r")
   lexPos = 1;
 
   if(lastTokenType == IDENTIFIER || lastTokenType == INTLITERAL || lastTokenType == RETURN || lastTokenType == INC ||
-      lastTokenType == DEC || lastTokenType == RPAREN || lastTokenType == RBRACE){
+      lastTokenType == DEC || lastTokenType == RPAREN || lastTokenType == RBRACE || lastTokenType == BOOLLITERAL){
     lastTokenType = SEMICOLON;
     return SEMICOLON;
   }
