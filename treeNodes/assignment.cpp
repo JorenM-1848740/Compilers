@@ -43,45 +43,59 @@ void Assignment_::typeCheck(vector<Scope>& scopeStack, vector<string>& typeError
         singleMultiValued = true;
     }
 
-    //If single valued expressions       
-    if (allSingleValued){
-        //Check if expression list is same size as identifier list
-        if (types2.size() == ids.size()){
-            //Check if types correspond with given type
-            for (int i = 0; i < types2.size();++i){
-                if (types1[i][0] != types2[i][0]){
-                    typeErrors.push_back("Left and right hand expressions don't have corresponding types!");
-                    return;
+    if (assignOp == "assign"){
+        //If single valued expressions       
+        if (allSingleValued){
+            //Check if expression list is same size as identifier list
+            if (types2.size() == ids.size()){
+                //Check if types correspond with given type
+                for (int i = 0; i < types2.size();++i){
+                    if (types1[i][0] != types2[i][0]){
+                        typeErrors.push_back("Left and right hand expressions don't have corresponding types!");
+                        return;
+                    }
                 }
             }
-        }
-        else{
-            typeErrors.push_back("Expression list and identifier list are not the same size!");
-            return;
-        } 
-    }   
-    //If one multi valued expression  
-    else if(singleMultiValued){
-        //If multi valued expression has equal values to identifier count
-        if (types2[0].size() == ids.size()){
+            else{
+                typeErrors.push_back("Expression list and identifier list are not the same size!");
+                return;
+            } 
+        }   
+        //If one multi valued expression  
+        else if(singleMultiValued){
+            //If multi valued expression has equal values to identifier count
+            if (types2[0].size() == ids.size()){
 
-            //Check if types correspond with given type
-            for (int i = 0; i < types2[0].size();++i){
-                if (types2[0][i] != types1[i][0]){
-                    typeErrors.push_back("Left and right hand expressions don't have corresponding types!");
-                    return;
+                //Check if types correspond with given type
+                for (int i = 0; i < types2[0].size();++i){
+                    if (types2[0][i] != types1[i][0]){
+                        typeErrors.push_back("Left and right hand expressions don't have corresponding types!");
+                        return;
+                    }
                 }
+            }
+            else{
+                typeErrors.push_back("Multi valued expression not the same size as identifier list!");
+                return;
             }
         }
         else{
-            typeErrors.push_back("Multi valued expression not the same size as identifier list!");
+            typeErrors.push_back("Incorrect assignment!");
             return;
         }
-    }
+    } 
     else{
-        typeErrors.push_back("Incorrect assignment!");
-        return;
-    }
+        if (!(ids.size() == 1 && allSingleValued && types2.size() == 1)){
+            typeErrors.push_back("Incorrect arithmetic assignment!");
+            return;
+        }
+        else{
+            if (!(types1[0][0] == "int" && types2[0][0] == "int")){
+                typeErrors.push_back("Arithmetic assignment not defined for this type!");
+                return;
+            }
+        }
+    }   
 
 }
 
@@ -100,13 +114,34 @@ void Assignment_::interpret(vector<Scope>& scopeStack, vector<string>& typeError
     }
 
     if(allSingleValued){
-        for (int i = 0; i < ids.size();++i){
+        if (assignOp == "assign"){
+            for (int i = 0; i < ids.size();++i){
+                //Search for identifier in scope stack
+                std::pair<string, string> typeValue;
+                int scopeLevel = 0;
+                for (int j = 0; j < scopeStack.size();++j){
+                    try{
+                        typeValue = scopeStack[scopeStack.size()-1-j]->getVariableValue(ids[i]);   
+                        break;
+                    }
+                    catch (exception e){    
+                                
+                    }        
+                    scopeLevel++; 
+                }
+
+                //Update scope stack
+                scopeStack[scopeStack.size()-1-scopeLevel]->updateVariableValue(ids[i], typeValue.first, values[i][0]);
+
+            }       
+        }      
+        else{
             //Search for identifier in scope stack
             std::pair<string, string> typeValue;
             int scopeLevel = 0;
             for (int j = 0; j < scopeStack.size();++j){
                 try{
-                    typeValue = scopeStack[scopeStack.size()-1-j]->getVariableValue(ids[i]);   
+                    typeValue = scopeStack[scopeStack.size()-1-j]->getVariableValue(ids[0]);   
                     break;
                 }
                 catch (exception e){    
@@ -116,9 +151,20 @@ void Assignment_::interpret(vector<Scope>& scopeStack, vector<string>& typeError
             }
 
             //Update scope stack
-            scopeStack[scopeStack.size()-1-scopeLevel]->updateVariableValue(ids[i], typeValue.first, values[i][0]);
-
-        }       
+            if (assignOp == "plusassign"){
+                values[0][0] = std::to_string(stoi(typeValue.second) + stoi(values[0][0]));
+            }
+            if (assignOp == "minassign"){
+                values[0][0] = std::to_string(stoi(typeValue.second) - stoi(values[0][0]));
+            }
+            if (assignOp == "mulassign"){
+                values[0][0] = std::to_string(stoi(typeValue.second) * stoi(values[0][0]));
+            }
+            if (assignOp == "divassign"){
+                values[0][0] = std::to_string(stoi(typeValue.second) / stoi(values[0][0]));
+            }
+            scopeStack[scopeStack.size()-1-scopeLevel]->updateVariableValue(ids[0], typeValue.first, values[0][0]);
+        }
     }
     //If one multi valued expression
     else{
